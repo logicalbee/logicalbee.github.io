@@ -1,0 +1,50 @@
+I"B<h3 id="how-to-deploy-wordpress-website-on-google-cloud-platform-gcp">How to Deploy WordPress Website On Google Cloud Platform (GCP).</h3>
+
+<p><img src="images/svg.png" alt="Google Cloud Platform" /></p>
+
+<p>Step-By-Step Guide to configure a website from scratch! You need a credit card or Debit card to get started with Google cloud patform (GCP).and You Need Domain name for the best Practice, Otherwise you can purchase domain name from domains.google.com or bigrock.in, or GoDaddy.com, etc.</p>
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6155459918319745" data-ad-slot="5213320505" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<p>#STEP #1
+Setup Google Cloud Platform
+at cloud.google.com using a free google account.
+#STEP #2
+Deploy WordPress Website by Bitnami
+#STEP #3
+Create a Static IP Address to point to the website.
+#STEP #4
+Create SSL Certificate
+&amp; Setup SSL Certificate AutoRenew</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sudo</span> <span class="o">/</span><span class="nx">opt</span><span class="o">/</span><span class="nx">bitnami</span><span class="o">/</span><span class="nx">letsencrypt</span><span class="o">/</span><span class="nx">scripts</span><span class="o">/</span><span class="nx">generate</span><span class="o">-</span><span class="nx">certificate</span><span class="p">.</span><span class="nx">sh</span> <span class="o">-</span><span class="nx">m</span> <span class="nx">giftinknot</span><span class="p">@</span><span class="nd">gmail</span><span class="p">.</span><span class="nx">com</span> <span class="o">-</span><span class="nx">d</span> <span class="nx">giftinknot</span><span class="p">.</span><span class="nx">com</span> <span class="o">-</span><span class="nx">d</span> <span class="nx">www</span><span class="p">.</span><span class="nx">giftinknot</span><span class="p">.</span><span class="nx">com</span>
+</code></pre></div></div>
+<p>Add code to Configuration file</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sudo</span> <span class="nx">nano</span> <span class="o">/</span><span class="nx">opt</span><span class="o">/</span><span class="nx">bitnami</span><span class="o">/</span><span class="nx">apache2</span><span class="o">/</span><span class="nx">conf</span><span class="o">/</span><span class="nx">bitnami</span><span class="o">/</span><span class="nx">bitnami</span><span class="p">.</span><span class="nx">conf</span>
+
+<span class="nx">RewriteEngine</span> <span class="nx">On</span>
+<span class="nx">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="nx">HTTPS</span><span class="p">}</span> <span class="o">!=</span><span class="nx">on</span>
+<span class="nx">RewriteRule</span> <span class="o">^</span><span class="sr">/</span><span class="se">(</span><span class="sr">.*</span><span class="se">)</span><span class="sr"> https:/</span><span class="o">/</span><span class="nx">www</span><span class="p">.</span><span class="nx">giftinknot</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">$1</span> <span class="p">[</span><span class="nx">R</span><span class="p">,</span><span class="nx">L</span><span class="p">]</span>
+</code></pre></div></div>
+<p>Restart Apache Server</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sudo</span> <span class="o">/</span><span class="nx">opt</span><span class="o">/</span><span class="nx">bitnami</span><span class="o">/</span><span class="nx">ctlscript</span><span class="p">.</span><span class="nx">sh</span> <span class="nx">restart</span> <span class="nx">apache</span>
+</code></pre></div></div>
+
+<p>#STEP #5
+Increase Performance using a CDN Content Delivery Network)
+www.CouldFlare.com/CDN</p>
+
+<p>#STEP #6
+Remove Bitnami Banner Ad</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sudo</span> <span class="o">/</span><span class="nx">opt</span><span class="o">/</span><span class="nx">bitnami</span><span class="o">/</span><span class="nx">apps</span><span class="o">/</span><span class="nx">wordpress</span><span class="o">/</span><span class="nx">bnconfig</span> <span class="err">–</span><span class="nx">disable_banner</span> <span class="mi">1</span>
+</code></pre></div></div>
+<p>Restart Apache Server</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sudo</span> <span class="o">/</span><span class="nx">opt</span><span class="o">/</span><span class="nx">bitnami</span><span class="o">/</span><span class="nx">ctlscript</span><span class="p">.</span><span class="nx">sh</span> <span class="nx">restart</span> <span class="nx">apache</span>
+</code></pre></div></div>
+
+<p>Thanks For Reading!</p>
+:ET

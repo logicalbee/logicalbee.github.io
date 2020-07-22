@@ -1,0 +1,1693 @@
+I"�<h1 id="c-stl-algorithms-cheat-sheet">C++ STL Algorithms Cheat Sheet</h1>
+
+<p>The C++ Standard Template Library provides algorithms for functions that are commonly needed in everyday-scenarios, and for commonly used containerss.</p>
+
+<p>Now, I’m sure you’re a gr8 coder and all and could write your own functions, but you should probably use the Standard Library’s functions whenever possible. They’re very efficient, both memory and space wise, especially if you use STL containers.</p>
+
+<h1 id="table-of-contents">Table of Contents</h1>
+
+<ul>
+  <li><a href="#makefile">makefile</a></li>
+  <li><a href="#all_of">all_of</a></li>
+  <li><a href="#any_of">any_of</a></li>
+  <li><a href="#none_of">none_of</a></li>
+  <li><a href="#for_each">for_each</a></li>
+  <li><a href="#find">find</a></li>
+  <li><a href="#find_if">find_if</a></li>
+  <li><a href="#find_if_not">find_if_not</a></li>
+  <li><a href="#find_end">find_end</a></li>
+  <li><a href="#find_first_of">find_first_of</a></li>
+  <li><a href="#adjacent_find">adjacent_find</a></li>
+  <li><a href="#count">count</a></li>
+  <li><a href="#count_if">count_if</a></li>
+  <li><a href="#mismatch">mismatch</a></li>
+  <li><a href="#equal">equal</a></li>
+  <li><a href="#is_permutation">is_permutation</a></li>
+  <li><a href="#search">search</a></li>
+  <li><a href="#search_n">search_n</a></li>
+  <li><a href="#lexicographical_compare">lexicographical_compare</a></li>
+  <li><a href="#copy">copy</a></li>
+  <li><a href="#copy_if">copy_if</a></li>
+  <li><a href="#copy_n">copy_n</a></li>
+  <li><a href="#copy_backward">copy_backward</a></li>
+  <li><a href="#move">move</a></li>
+  <li><a href="#move_backward">move_backward</a></li>
+  <li><a href="#swap">swap</a></li>
+  <li><a href="#swap_ranges">swap_ranges</a></li>
+  <li><a href="#iter_swap">iter_swap</a></li>
+  <li><a href="#transform">transform</a></li>
+  <li><a href="#replace">replace</a></li>
+  <li><a href="#replace_if">replace_if</a></li>
+  <li><a href="#replace_copy">replace_copy</a></li>
+  <li><a href="#replace_copy_if">replace_copy_if</a></li>
+  <li><a href="#fill">fill</a></li>
+  <li><a href="#fill_n">fill_n</a></li>
+  <li><a href="#generate">generate</a></li>
+  <li><a href="#generate_n">generate_n</a></li>
+  <li><a href="#remove">remove</a></li>
+  <li><a href="#remove_if">remove_if</a></li>
+  <li><a href="#remove_copy">remove_copy</a></li>
+  <li><a href="#remove_copy_if">remove_copy_if</a></li>
+  <li><a href="#unique">unique</a></li>
+  <li><a href="#unique_copy">unique_copy</a></li>
+  <li><a href="#reverse">reverse</a></li>
+  <li><a href="#reverse_copy">reverse_copy</a></li>
+  <li><a href="#rotate">rotate</a></li>
+  <li><a href="#rotate_copy">rotate_copy</a></li>
+  <li><a href="#random_shuffle">random_shuffle</a></li>
+  <li><a href="#shuffle">shuffle</a></li>
+  <li><a href="#is_partitioned">is_partitioned</a></li>
+  <li><a href="#partition">partition</a></li>
+  <li><a href="#stable_partition">stable_partition</a></li>
+  <li><a href="#partition_copy">partition_copy</a></li>
+  <li><a href="#partition_point">partition_point</a></li>
+  <li><a href="#sort">sort</a></li>
+  <li><a href="#stable_sort">stable_sort</a></li>
+  <li><a href="#partial_sort">partial_sort</a></li>
+  <li><a href="#partial_sort_copy">partial_sort_copy</a></li>
+  <li><a href="#is_sorted">is_sorted</a></li>
+  <li><a href="#is_sort_until">is_sort_until</a></li>
+  <li><a href="#nth_element">nth_element</a></li>
+  <li><a href="#lower_bound">lower_bound</a></li>
+  <li><a href="#upper_bound">upper_bound</a></li>
+  <li><a href="#equal_range">equal_range</a></li>
+  <li><a href="#binary_search">binary_search</a></li>
+  <li><a href="#merge">merge</a></li>
+  <li><a href="#inplace_merge">inplace_merge</a></li>
+  <li><a href="#includes">includes</a></li>
+  <li><a href="#set_union">set_union</a></li>
+  <li><a href="#set_intersection">set_intersection</a></li>
+  <li><a href="#set_difference">set_difference</a></li>
+  <li><a href="#set_symmetric_difference">set_symmetric_difference</a></li>
+  <li><a href="#make_heap">make_heap</a></li>
+  <li><a href="#push_heap">push_heap</a></li>
+  <li><a href="#pop_heap">pop_heap</a></li>
+  <li><a href="#sort_heap">sort_heap</a></li>
+  <li><a href="#is_heap">is_heap</a></li>
+  <li><a href="#is_heap_until">is_heap_until</a></li>
+  <li><a href="#min">min</a></li>
+  <li><a href="#max">max</a></li>
+  <li><a href="#minmax">minmax</a></li>
+  <li><a href="#min_element">min_element</a></li>
+  <li><a href="#minmax_element">minmax_element</a></li>
+  <li><a href="#next_permutation">next_permutation</a></li>
+  <li><a href="#prev_permutation">prev_permutation</a></li>
+  <li><a href="#notes">Notes</a></li>
+</ul>
+
+<h2 id="base-code-and-c-version">Base Code and C++ version</h2>
+
+<p>For the sake of testing this code, we’ll specify a very basic C++ file that our code would run in. Note that we include <code class="language-plaintext highlighter-rouge">vector</code>, because that’s the container the examples will use, we’re including <code class="language-plaintext highlighter-rouge">iostream</code> for <code class="language-plaintext highlighter-rouge">cout</code>, and we including <code class="language-plaintext highlighter-rouge">algorithm</code> for the actual STL algorithms.</p>
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6155459918319745" data-ad-slot="5213320505" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<h4 id="maincpp">main.cpp</h4>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt; 
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+	<span class="p">{</span>
+	<span class="c1">// INSERT STD:ALGORITHM EXAMPLE CODE HERE</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We’ll use a simple makefile to compile and run, specifying C++11.</p>
+
+<h3 id="makefile">makefile</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">all:</span>
+	<span class="n">g</span><span class="o">++</span> <span class="n">main</span><span class="p">.</span><span class="n">cpp</span> <span class="o">-</span><span class="n">std</span><span class="o">=</span><span class="n">c</span><span class="o">++</span><span class="mi">11</span> <span class="o">-</span><span class="n">o</span> <span class="n">run</span>
+	<span class="p">.</span><span class="o">/</span><span class="n">run</span>
+</code></pre></div></div>
+
+<p>And so to actually run this code, in a UNIX operating system, in the terminal, simply type <code class="language-plaintext highlighter-rouge">make</code> in the directory where your makefile and main.cpp are.</p>
+
+<h1 id="figure-something-out-about-data">Figure Something Out About Data</h1>
+
+<p>Need to do something with the data in your container? Look here.</p>
+
+<h3 id="all_of">all_of</h3>
+
+<p>Check if every element in the range satisfies the condition.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a lambda function that does something with the element of the container.</li>
+  <li>Returns a bool. True if all elements satisfied the condition, false otherwise.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambda</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="n">allGreaterThanOne</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">all_of</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambda</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="any_of">any_of</h3>
+
+<p>Check if any element in the range satisfies the condition.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a lambda function that does something with the element of the container.</li>
+  <li>Returns a bool. True if any element satisfied the condition, false otherwise.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambda</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="n">anyGreaterThanEight</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">any_of</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambda</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="none_of">none_of</h3>
+
+<p>Check if none of the elements in the range satisfies the condition.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a lambda function that does something with the element of the container.</li>
+  <li>Returns a bool. True if all elements fail the condition, false if any element passes the condition.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambda</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="n">noneGreaterThanTen</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">none_of</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambda</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="for_each">for_each</h3>
+
+<p>Does something for each item in a range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a lambda function that does something with the element of the container.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambda</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambda</span><span class="p">);</span> <span class="c1">// Prints each element in the container.</span>
+</code></pre></div></div>
+
+<h3 id="find">find</h3>
+
+<p>Find an item in a given range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and an item that you want to find.</li>
+  <li>Returns an iterator to the first element in the range that is equal to the item we specified.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+	
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">3</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="find_if">find_if</h3>
+
+<p>Find the first item that satisfies a condition.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a lambda function that returns a bool.</li>
+  <li>Returns an iterator to the first element in the range that satisfies the lambda’s condition.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+	
+<span class="k">auto</span> <span class="n">lambda</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambda</span><span class="p">);</span> 
+
+<span class="kt">int</span> <span class="n">firstElementGreaterThanSix</span> <span class="o">=</span> <span class="o">*</span><span class="n">it</span><span class="p">;</span> <span class="c1">// 7</span>
+</code></pre></div></div>
+
+<h3 id="find_if_not">find_if_not</h3>
+
+<p>Find the first item that does not satisfy a condition.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a lambda function that returns a bool.</li>
+  <li>Returns an iterator to the first element in the range that does not satisfy the lambda’s condition.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+	
+<span class="k">auto</span> <span class="n">lambda</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find_if_not</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambda</span><span class="p">);</span> 
+
+<span class="kt">int</span> <span class="n">firstElementLessThanSix</span> <span class="o">=</span> <span class="o">*</span><span class="n">it</span><span class="p">;</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h3 id="find_end">find_end</h3>
+
+<p>For a range, find the last occurence of a sequence in that range. (Ex. Get the last “oo” in “moo_cookies”.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, and an iterator to the end of the first range, and an iterator to the beginning of the sequence, and an iterator to the end of the sequence,</li>
+  <li>Returns an iterator to the first item of the sequence.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"moo_cookies"</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"oo"</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find_end</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> 
+<span class="c1">// Points to the 'o' after the 'c'</span>
+</code></pre></div></div>
+
+<h3 id="find_first_of">find_first_of</h3>
+
+<p>For a range, find the first occurence of a sequence in that range. (Ex. Get the first “oo” in “moo_cookies”.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, and an iterator to the end of the first range, and an iterator to the beginning of the sequence, and an iterator to the end of the sequence,</li>
+  <li>Returns an iterator to the first item of the sequence.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"moo_cookies"</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"oo"</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find_first_of</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> 
+<span class="c1">// Points to the 'o' after the 'm</span>
+</code></pre></div></div>
+
+<h3 id="adjacent_find">adjacent_find</h3>
+
+<p>Find the first occurrence of two consecutive elements that match in a range. (Ex. The “cc” in “accentt”.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns an iterator to the first item in the match.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"accentt"</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">adjacent_find</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// Points to the first 'c'</span>
+</code></pre></div></div>
+
+<h3 id="count">count</h3>
+
+<p>Count the number of times an item appears in the range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and the item we want to count.</li>
+  <li>Returns an integer.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+	
+<span class="kt">int</span> <span class="n">countOfThree</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">count</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// 2</span>
+</code></pre></div></div>
+
+<h3 id="count_if">count_if</h3>
+
+<p>Count the number of occurrences satisfying the lambda function.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a lambda function that returns true or false.</li>
+  <li>Returns an integer.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambda</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">count_if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambda</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="mismatch">mismatch</h3>
+
+<p>Finds the first occurrence where two rangers differ.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and an iterator to the beginning of the second range.</li>
+  <li>Returns a <code class="language-plaintext highlighter-rouge">pair</code> of iterators to the positions where the ranges occur.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span> <span class="p">};</span>
+	
+<span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">mismatch</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="kt">int</span> <span class="n">element1</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">;</span> <span class="c1">// 7</span>
+<span class="kt">int</span> <span class="n">element2</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">;</span> <span class="c1">// 2</span>
+</code></pre></div></div>
+
+<h3 id="equal">equal</h3>
+
+<p>Check if the elements in two ranges are equal.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and an iterator to the beginning of the second range.</li>
+  <li>Returns a bool. True if the elements are equal, false otherwise.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="n">isEqual</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">equal</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="is_permutation">is_permutation</h3>
+
+<p>Check if a range is a permutation of another.</p>
+
+<p>A “permutation” is if the items in one range can be rearranged to form the other range. (Ex. “dog” can be rearranged to form “god”.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and an iterator to the beginning of the second range.</li>
+  <li>Returns a bool. True if the elements are permutations, false otherwise.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="sc">'g'</span><span class="p">,</span> <span class="sc">'o'</span><span class="p">,</span> <span class="sc">'d'</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="sc">'d'</span><span class="p">,</span> <span class="sc">'o'</span><span class="p">,</span> <span class="sc">'g'</span> <span class="p">};</span>
+	
+<span class="kt">bool</span> <span class="n">isPermutation</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_permutation</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="search">search</h3>
+
+<p>Check if a range contains a certain sequence. (Ex. Does “this” contain “is”?)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, and an iterator to the end of the first range, and an iterator to the beginning of the second range (sequence), and an iterator to the end of the second range (sequence).</li>
+  <li>Returns an iterator to the first item in the range that begins the sequence.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="sc">'t'</span><span class="p">,</span> <span class="sc">'h'</span><span class="p">,</span> <span class="sc">'i'</span><span class="p">,</span> <span class="sc">'s'</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="sc">'i'</span><span class="p">,</span> <span class="sc">'s'</span> <span class="p">};</span>
+	
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">search</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> 
+<span class="c1">// Points to the 'i' in v1</span>
+</code></pre></div></div>
+
+<h3 id="search_n">search_n</h3>
+
+<p>Search a range for a certain number of a specific item. (Ex. Find two ‘e’s in a row in the word ‘esteem’.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and the count of the number of the item we need to find, and the item we’re trying to find.</li>
+  <li>Returns an iterator to the first item in the range that begins the sequence.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="sc">'e'</span><span class="p">,</span> <span class="sc">'s'</span><span class="p">,</span> <span class="sc">'t'</span><span class="p">,</span> <span class="sc">'e'</span><span class="p">,</span> <span class="sc">'e'</span><span class="p">,</span> <span class="sc">'m'</span> <span class="p">};</span>
+	
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">search_n</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">2</span><span class="p">,</span> <span class="sc">'e'</span><span class="p">);</span> 
+<span class="c1">// Points to the 'e' after the 't'.</span>
+</code></pre></div></div>
+
+<h3 id="lexicographical_compare">lexicographical_compare</h3>
+
+<p>Lexographically compare two items to find out which is ‘smaller’.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, and an iterator to the end of the first range, an iterator to the beginning of the second range, and an iterator to the end of the second range.</li>
+  <li>Returns a bool. True if the first range is lexographically less than the second range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"abc"</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"def"</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">sIsSmaller</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">lexicographical_compare</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h1 id="modifycopy-a-range">Modify/Copy A Range</h1>
+
+<p>A range is going to be edited or copied.</p>
+
+<h3 id="copy">copy</h3>
+
+<p>Copy the elements from one range into another.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, and an iterator to the beginning of the copy range.</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// v2 is { 1 2 3 4 }</span>
+<span class="c1">// 'it' points to the element after 4 in v2.</span>
+</code></pre></div></div>
+
+<h3 id="copy_n">copy_n</h3>
+
+<p>Copy the first n elements from one range into another.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an int representing how many elements to copy, and an iterator to the beginning of the copy range.</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">copy_n</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="mi">2</span><span class="p">,</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// v2 is { 1 2 }</span>
+<span class="c1">// "it" points to the element after 2 in v2.</span>
+</code></pre></div></div>
+
+<h3 id="copy_if">copy_if</h3>
+
+<p>Copy elements from one range into another if the condition we specify is met.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, an iterator to the beginning of the copy range, and a lambda function that returns a bool.</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsEven</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">copy_if</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">lambdaIsEven</span><span class="p">);</span>
+
+<span class="c1">// v2 is { 2 4 }</span>
+<span class="c1">// "it" points to the element after 4 in v2.</span>
+</code></pre></div></div>
+
+<h3 id="copy_backward">copy_backward</h3>
+
+<p>Copy the elements from one range into another, starting from the back elements and going to the front.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, and an iterator to the end of the copy range.</li>
+  <li>Returns an iterator to the last element we wrote to in the copy range (which is the beginning of the copy range).</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">copy_backward</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v2 is { 1 2 3 4 }</span>
+<span class="c1">// "it" points to the 1 in v2.</span>
+</code></pre></div></div>
+
+<h3 id="move">move</h3>
+
+<p>Move the elements from one range into another. The elements in the original range are valid, but may not be what they were before the move.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, and an iterator to the beginning of the move range.</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the move range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// v1 is { 1 2 3 4 } (It just happens to be unchanged.)</span>
+<span class="c1">// v2 is { 1 2 3 4 }</span>
+<span class="c1">// 'it' points to the element after 4 in v2.</span>
+</code></pre></div></div>
+
+<h3 id="move_backward">move_backward</h3>
+
+<p>Move the elements from one range into another, starting from the back elements and going to the front. The elements in the original range are valid, but may not be what they were before the move.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, and an iterator to the end of the move range.</li>
+  <li>Returns an iterator to the last element we wrote to in the move range (which is the beginning of the move range).</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move_backward</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v1 is { 1 2 3 4 } (It just happens to be unchanged.)</span>
+<span class="c1">// v2 is { 1 2 3 4 }</span>
+<span class="c1">// 'it' points to the 1 in v2.</span>
+</code></pre></div></div>
+
+<h3 id="swap">swap</h3>
+
+<p>Swaps the values of two items.</p>
+
+<ul>
+  <li>Pass in the first and the second item.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// Now a = 10 and b = 5.</span>
+</code></pre></div></div>
+
+<h3 id="swap_ranges">swap_ranges</h3>
+
+<p>Given two ranges, swaps the items in them (using the <code class="language-plaintext highlighter-rouge">swap</code> function).</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, and an iterator to the beginning of the second range.</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the second range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">swap_ranges</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// v1 is { 5 6 7 8 }</span>
+<span class="c1">// v2 is { 1 2 3 4 }</span>
+<span class="c1">// 'it' points to the element after 4 in v2.</span>
+</code></pre></div></div>
+
+<h3 id="iter_swap">iter_swap</h3>
+
+<p>Swap the values that two iterators point too.</p>
+
+<ul>
+  <li>Pass in an iterator to the first value, and an iterator to the second value.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it1</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="c1">// Points to 1</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it2</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Points to 4</span>
+	
+<span class="n">std</span><span class="o">::</span><span class="n">iter_swap</span><span class="p">(</span><span class="n">it1</span><span class="p">,</span> <span class="n">it2</span><span class="p">);</span>
+
+<span class="c1">// v is now { 5 2 3 4 1 }</span>
+</code></pre></div></div>
+
+<h3 id="transform">transform</h3>
+
+<p>Given one or two ranges, performs an operation on each value of the range and stores that result in another range. (For example, multiply each value in a vector by some number and store it in another vector. Or add each value in two vectors and put that into another vector.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, (optionally, an iterator to the beginning of the second range if there is one), and an iterator to the beginning of the resulting range, and a lamba expression that accepts the element type(s) and returns the element type that does the operation we want to want to do on the range(s).</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the resulting range.</li>
+</ul>
+
+<p>Example with just one range:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="k">auto</span> <span class="n">lambdaAddOne</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">lambdaAddOne</span><span class="p">);</span>
+
+<span class="c1">// res is { 2 3 4 5 6 }</span>
+</code></pre></div></div>
+
+<p>Example with two ranges:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="k">auto</span> <span class="n">lambdaMultiply</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">lambdaMultiply</span><span class="p">);</span>
+
+<span class="c1">// res is { 4 10 18 }</span>
+</code></pre></div></div>
+
+<h3 id="replace">replace</h3>
+
+<p>For a range, replaces an old value (that we specify) with a new value (that we specify). (Ex. Replace all 3’s with 7’s.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, the old value, and the new value.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">replace</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+
+<span class="c1">// res is now { 1 2 7 4 7 5 }</span>
+</code></pre></div></div>
+
+<h3 id="replace_if">replace_if</h3>
+
+<p>For a range, replaces an element that passes a certain condition with a new value (that we specify). (Ex. Replace all negative elements with a 0.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, a lambda expression that returns a bool, and the new value.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsNegative</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">replace_if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaIsNegative</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// res is now { 1 2 0 4 0 }</span>
+</code></pre></div></div>
+
+<h3 id="replace_copy">replace_copy</h3>
+
+<p>For a range, copies the elements into another range, and replaces any element (that we specify) with a new value (that we specify) for the new range. Doesn’t change the old range. (Ex. Replace all 3’s with 7’s.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, an iterator to the beginning of the new range, the old value, and the new value.</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the resulting range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+
+<span class="c1">//auto lambdaIsNegative = [](int i) { return i &lt; 0; };</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">replace_copy</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+
+<span class="c1">// v is still { 1 2 3 4 3 5 }</span>
+<span class="c1">// res is now { 1 2 7 4 7 5 }</span>
+<span class="c1">// 'it' points to the element after 5 in res.</span>
+</code></pre></div></div>
+
+<h3 id="replace_copy_if">replace_copy_if</h3>
+
+<p>For a range, copies the elements into another range, and replaces any element that passes a certain condition with a different value (that we specify) for the new range. Doesn’t change the old range. (Ex. Replace all negative elements with a 0.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, an iterator to the beginning of the new range, a lambda expression that returns a bool, and the new value.</li>
+  <li>Returns an iterator to the element after the last one we wrote to in the resulting range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsNegative</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">replace_copy_if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">lambdaIsNegative</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// v is still { 1 2 -3 4 -5 }</span>
+<span class="c1">// res is now { 1 2 0 4 0 }</span>
+<span class="c1">// 'it' points to the element after the second 0 in res.</span>
+</code></pre></div></div>
+
+<h3 id="fill">fill</h3>
+
+<p>For a range, fill every element with an item (that we specify). (Ex. Fill a range with all 7s.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and the value that we want to fill it with.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">fill</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">7</span><span class="p">);</span>
+	
+<span class="c1">// v is now { 7 7 7 7 7 }</span>
+</code></pre></div></div>
+
+<h3 id="fill_n">fill_n</h3>
+
+<p>For a range, fill every element with an item (that we specify). (Ex. Fill the first 3 elements of a range with 7s.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range,the number of elements we want to fill, and the value that we want to fill it with.</li>
+  <li>Returns an iterator to the element after the last one we wrote to.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">fill_n</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span> <span class="c1">// Fill the first 3, only.</span>
+	
+<span class="c1">// v is now { 7 7 7 4 5 }</span>
+</code></pre></div></div>
+
+<h3 id="generate">generate</h3>
+
+<p>For a range, assigns each element with a value generated by a function (that we specify). (Ex. Use a random number generator function to determine what to assign each element.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and a function (that accepts no parameters) that returns the type of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaReturnNine</span> <span class="o">=</span> <span class="p">[]()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">9</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">generate</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaReturnNine</span><span class="p">);</span> 
+	
+<span class="c1">// v is now { 9 9 9 9 9 }</span>
+</code></pre></div></div>
+
+<h3 id="generate_n">generate_n</h3>
+
+<p>For a range, assigns each element with a value generated by a function (that we specify) for the first n elements. (Ex. Use a random number generator function to determine what to assign each element for the first 3 elements.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, the number of elements we want assign to, and a function (that accepts no parameters) that returns the type of the range.</li>
+  <li>Returns an iterator to the element after the last one we wrote to.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaReturnNine</span> <span class="o">=</span> <span class="p">[]()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">9</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">generate_n</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="mi">3</span><span class="p">,</span> <span class="n">lambdaReturnNine</span><span class="p">);</span> 
+	
+<span class="c1">// v is now { 9 9 9 4 5 }</span>
+</code></pre></div></div>
+
+<h3 id="remove">remove</h3>
+
+<p>For a range, removes any element that has a certain value (that you specify). This is done by moving a valid element into the removed element’s spot. (The container size does not change.) You’ll know where the updated range ends by checking where the returned iterator is. Order is not preserved, and the extra elements at the end of the range are in some valid state.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and the value to be removed.</li>
+  <li>Returns an iterator after the last valid element in the range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// v is now { 1 3 4 5 5 }</span>
+
+<span class="c1">// 'it' points to the element after the first 5 in v.</span>
+</code></pre></div></div>
+
+<h3 id="remove_if">remove_if</h3>
+
+<p>For a range, removes any element that passes a certain condition (that you specify). This is done by moving a valid element into the removed element’s spot. (The container size does not change.) You’ll know where the updated range ends by checking where the returned iterator is. Order is not preserved, and the extra elements at the end of the range are in some valid state.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and a lambda function that returns a bool.</li>
+  <li>Returns an iterator after the last valid element in the range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsOdd</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">remove_if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaIsOdd</span><span class="p">);</span>
+
+<span class="c1">// v is now { 2 4 3 4 5 }</span>
+
+<span class="c1">// 'it' points to the element after the first 4 in v.</span>
+</code></pre></div></div>
+
+<h3 id="remove_copy">remove_copy</h3>
+
+<p>For a given range, copies each element into a new range, except for elements with a certain value (that you specify). The original range is untouched.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the original range, an iterator to the end of the original range, an iterator to the beginning of the copy range, and the value that you want to skip.</li>
+  <li>Returns an iterator after the last valid element in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">remove_copy</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// v is now { 1 3 4 5 0 } // (The zero is from the initialization.)</span>
+
+<span class="c1">// 'it' points to the element after the 5 in res</span>
+</code></pre></div></div>
+
+<h3 id="remove_copy_if">remove_copy_if</h3>
+
+<p>For a given range, copies each element into a new range, except for elements that pass a certain condition (that you specify). The original range is untouched.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the original range, an iterator to the end of the original range, an iterator to the beginning of the copy range, and a lambda function that returns a bool.</li>
+  <li>Returns an iterator after the last valid element in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsOdd</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">remove_copy_if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">lambdaIsOdd</span><span class="p">);</span>
+
+<span class="c1">// v is now { 2 4 0 0 0 } // (The zeroes are from the initialization.)</span>
+
+<span class="c1">// 'it' points to the element after the 4 in res</span>
+</code></pre></div></div>
+
+<h3 id="unique">unique</h3>
+
+<p>For a range, remove consecutive duplicate elements. (Ex. { 2 2 3 3 4 4 4 3 } -&gt; { 2 3 4 3 ? ? ? ? } ) This is done by moving a valid element into the removed element’s spot. (The container size does not change.) You’ll know where the updated range ends by checking where the returned iterator is. Order is not preserved, and the extra elements at the end of the range are in some valid state.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns an iterator after the last valid element in the range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">unique</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is now { 2 3 4 3 4 4 4 3 }</span>
+
+<span class="c1">// 'it' points to the element after the second 3 in v.</span>
+</code></pre></div></div>
+
+<h3 id="unique_copy">unique_copy</h3>
+
+<p>For a range, copies all elements that don’t have a duplicate neighbor into a new range (that you specify). (Ex. { 2 2 3 3 4 4 4 3 } -&gt; { 2 3 4 3 } ) The original range is untouched.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the original range, an iterator to the end of the original range, and an iterator to the beginning of the copy range.</li>
+  <li>Returns an iterator after the last copied element in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">unique_copy</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// v is still { 2 3 4 3 4 4 4 3 }</span>
+<span class="c1">// res is now { 2 3 4 3 0 0 0 0 } (The zeroes are from initialization.)</span>
+
+<span class="c1">// 'it' points to the element after the second 3 in res.</span>
+</code></pre></div></div>
+
+<h3 id="reverse">reverse</h3>
+
+<p>For a range, reverses the order of the elements. (Ex. { 1 2 3 4 } -&gt; { 4 3 2 1 } .)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">reverse</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is { 4 3 2 1 }</span>
+</code></pre></div></div>
+
+<h3 id="reverse_copy">reverse_copy</h3>
+
+<p>For a range, copies the elements in verse order into a new range (that you specify). (Ex. { 1 2 3 4 } -&gt; { 4 3 2 1 } .) The original range is untouched.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the original range, an iterator to the end of the original range, and an iterator to the beginning of the copy range.</li>
+  <li>Returns an iterator after the last copied element in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">reverse_copy</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// v is { 1 2 3 4 }</span>
+<span class="c1">// res is { 4 3 2 1 }</span>
+<span class="c1">// 'it' points to the element after 1 in res</span>
+</code></pre></div></div>
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6155459918319745" data-ad-slot="5213320505" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<h3 id="rotate">rotate</h3>
+
+<p>For a range, rotates the elements (in a circular fashion) so that a specified becomes the new first element, and every other element is shifted over.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the element we want to be the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// Points to 3</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">rotate</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">it</span><span class="p">,</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is now { 3 4 1 2 }</span>
+</code></pre></div></div>
+
+<h3 id="rotate_copy">rotate_copy</h3>
+
+<p>For a range, copies the elements into a new range if the elements were rotating (in a circular fashion) so that a specified becomes the new first element, and every other element is shifted over. The original range is untouched.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the original range, an iterator to the element we want to be the beginning of the copy range. an iterator to the end of the original range, and an iterator to the beginning of the copy range.</li>
+  <li>Returns an iterator after the last copied element in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it1</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// Points to 3</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it2</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">rotate_copy</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">it1</span><span class="p">,</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// v is still { 1 2 3 4 }</span>
+<span class="c1">// res is { 3 4 1 2 }</span>
+<span class="c1">// 'it2' points to the element after 2 in res</span>
+</code></pre></div></div>
+
+<h3 id="random_shuffle">random_shuffle</h3>
+
+<p>For a range, rearranges the elements randomly. (<code class="language-plaintext highlighter-rouge">random_shuffle</code> uses <code class="language-plaintext highlighter-rouge">rand()</code> as the random number generator.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+	
+<span class="n">std</span><span class="o">::</span><span class="n">random_shuffle</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is { 1 4 2 3 }</span>
+</code></pre></div></div>
+
+<h3 id="shuffle">shuffle</h3>
+
+<p>For a range, rearranges the elements randomly using a uniform random number generator (that you must provide).</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and a random number generator.</li>
+  <li>Returns void.</li>
+</ul>
+
+<p>You should really be using <code class="language-plaintext highlighter-rouge">random</code> or some other library to provide a random number generator. Since the code example isn’t simple, I’ll just provide a link to <a href="http://www.cplusplus.com/reference/algorithm/shuffle/">cplusplus.com’s shuffle page</a> for sample code..</p>
+
+<hr />
+
+<h1 id="partitioned">Partitioned</h1>
+
+<p>Operate on partioned data, which is split in half based on a certain condition.</p>
+
+<h3 id="is_partitioned">is_partitioned</h3>
+
+<p>Check if the data in a range is partitioned according to a condition you specify. (Ex. Are the odd elements separated from the even elements?)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and a lambda that returns a bool.</li>
+  <li>Returns a bool. True if the data is in the beginning all return true and the data afterward all return false. Returns false otherwise.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsOdd</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="n">isPartitioned</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_partitioned</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaIsOdd</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>Note that if the data is all false and then all true, <code class="language-plaintext highlighter-rouge">is_partitioned</code> will return false. Make sure your lambda will return “true” for the front data. For example..</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsEven</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="n">isPartitioned</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_partitioned</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaIsEven</span><span class="p">);</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<p>isPartitioned is false even though the data is clearly partitioned. That’s because the first partition returns false and the second partition returns true.</p>
+
+<h3 id="partition">partition</h3>
+
+<p>Rearranges the elements in a range so that the first group returns true for the condition you specify. (Ex. Move all odd elements to the front.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and a lambda that returns a bool.</li>
+  <li>Returns an iterator to the first element of the second partition.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsOdd</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">partition</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaIsOdd</span><span class="p">);</span>
+
+<span class="c1">// v is now { 1 7 3 5 4 6 2 }</span>
+</code></pre></div></div>
+
+<h3 id="stable_partition">stable_partition</h3>
+
+<p>Rearranges the elements in a range so that the first group returns true for the condition you specify. (Ex. Move all odd elements to the front.) Order is preserved.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and a lambda that returns a bool.</li>
+  <li>Returns an iterator to the first element of the second partition.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsOdd</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stable_partition</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaIsOdd</span><span class="p">);</span>
+
+<span class="c1">// v is now { 1 3 5 7 2 4 6 }</span>
+</code></pre></div></div>
+
+<h3 id="partition_copy">partition_copy</h3>
+
+<p>For a range, copies the data which is true for a condition we specify into some range, and copies the data that is false into some other range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the original range, an iterator to the end of the original range, an iterator to the beginning of the “true” range, an iterator to the end of the “false” range, and a lambda that returns a bool.</li>
+  <li>Returns a <code class="language-plaintext highlighter-rouge">pair</code> of iterators to the element after the last entered element for each of the copy ranges.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v3</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsOdd</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">partition_copy</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v3</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">lambdaIsOdd</span><span class="p">);</span>
+
+<span class="c1">// v2 is now { 1 3 5 7 0 0 0 } (The zeroes are from initialization.)</span>
+<span class="c1">// v3 is now { 2 4 6 0 0 0 0 } (The zeroes are from initialization.)</span>
+</code></pre></div></div>
+
+<h3 id="partition_point">partition_point</h3>
+
+<p>Get the first element in a partitioned range that returns false for a given condition. (The element that begins the partition.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the end of the range, and a lambda that returns a bool.</li>
+  <li>Returns an iterator to the element.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">};</span>
+
+<span class="k">auto</span> <span class="n">lambdaIsOdd</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">partition_point</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">lambdaIsOdd</span><span class="p">);</span>
+<span class="c1">// Points to 8</span>
+</code></pre></div></div>
+
+<h1 id="sorting">Sorting</h1>
+
+<p>Sorting data.</p>
+
+<h3 id="sort">sort</h3>
+
+<p>Sort the elements in a container for the given range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> 
+
+<span class="c1">// v is now { 1, 2, 3, 5, 7 }.</span>
+</code></pre></div></div>
+
+<h3 id="stable_sort">stable_sort</h3>
+
+<p>Sort the elements in a container for the given range, but the sort is stable.</p>
+
+<p>A “stable” sort means that for equal elements, an element that was ahead of another before the sort will be ahead after the sort.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span> <span class="c1">// { 5, 3a, 7, 3b, 2, 1 }</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">stable_sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> 
+
+<span class="c1">// v is now { 1, 2, 3a, 3b, 5, 7 }</span>
+</code></pre></div></div>
+
+<p>Stable sort is best used for objects.</p>
+
+<h3 id="partial_sort">partial_sort</h3>
+
+<p>For a position in a range, make sure all the elements from the beginning of the range up to that position are the smallest elements in the range and are sorted. (The rest of the elements (which are up to the position until the end of the range) aren’t in any specific order.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and an iterator to the position we want to partially sort for.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">partial_sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">it</span><span class="p">);</span>
+
+<span class="c1">// v ends up as { 1, 2, 3, 4, 5, 6, 7, 9}</span>
+</code></pre></div></div>
+
+<p>In the code example, v ends up fully sorted, but only the first three elements are guaranteed to be sorted.</p>
+
+<h3 id="partial_sort_copy">partial_sort_copy</h3>
+
+<p>Copies the items from a range into a second range, in sorted order.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, and an iterator to the end of the first range, and an iterator to the beginning of the range we want to copy into, and an iterator to the end of the range we want to copy into,</li>
+  <li>Returns an iterator to the item after where we finished writing to in the copy range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="c1">// Initialize v2 with 6 elements.</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itStart</span> <span class="o">=</span> <span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itEnd</span> <span class="o">=</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">partial_sort_copy</span><span class="p">(</span><span class="n">itStart</span><span class="p">,</span> <span class="n">itEnd</span><span class="p">,</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v2 ends up as { 1, 2, 3, 6, 7, 9}</span>
+<span class="c1">// 5 and 4 are skipped since they aren't in range. v2 is in sorted order.</span>
+</code></pre></div></div>
+
+<h3 id="is_sorted">is_sorted</h3>
+
+<p>Check whether a given range is sorted.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns a bool. True if the range is sorted, false if it’s not sorted.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="n">isSorted</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_sorted</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<h3 id="is_sort_until">is_sort_until</h3>
+
+<p>Finds the first element in a range that isn’t sorted.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns an iterator to the first unsorted element.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_sorted_until</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> 
+<span class="c1">// Points to the 1</span>
+</code></pre></div></div>
+
+<h3 id="nth_element">nth_element</h3>
+
+<p>For the position that you specify in a range, places the element at that position that would be there if the range was sorted. (“What would the nth element be if this range was sorted” without actually sorting the entire range.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, an iterator to the position we want to find out about, and an iterator to the end of the range.</li>
+  <li>Returns void. (The range is edited, though.)</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+	
+<span class="c1">// v sorted would be { 3, 4, 5, 7, 9 }</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 2nd element in v.</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">nth_element</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">it</span><span class="p">,</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="kt">int</span> <span class="n">element</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<h1 id="binary-search">Binary Search</h1>
+
+<p>These algorithms are about binary searching O(log N) a sorted range for a value.</p>
+
+<h3 id="lower_bound">lower_bound</h3>
+
+<p>Returns an iterator for the lower bound of an element in a range.</p>
+
+<p>“Lower bound” means the first element that is not less than the element we’re searching for.</p>
+
+<p>For example, for vector [3, 3, 4, 4, 4, 5, 7], lower_bound(4) points to the very first 4 (at index 2).
+lower_bound(6) points to 7, since that’s the first element not less than 6.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and the element you want to search for.</li>
+  <li>Returns an iterator to the element. (Or to the container’s end if the element doesn’t exist.)</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">it</span> <span class="o">-</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="c1">// 2</span>
+</code></pre></div></div>
+
+<h3 id="upper_bound">upper_bound</h3>
+
+<p>Returns an iterator for the upper bound of an element in a range.</p>
+
+<p>“Upper bound” means the first element that is greater than the element we’re searching for.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and the element you want to search for.</li>
+  <li>Returns an iterator to the element. (Or to the container’s end if the element doesn’t exist.)</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">upper_bound</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">it</span> <span class="o">-</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h3 id="equal_range">equal_range</h3>
+
+<p>Finds the starting index and ending index for an element in a range. (Meaning if we have duplicates of an item in a container, and we want to find out the range of where those items are.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and the element you want to search for.</li>
+  <li>Returns an <code class="language-plaintext highlighter-rouge">pair</code> of iterators of the element type.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">equal_range</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">startIterator</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">endIterator</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">startIndex</span> <span class="o">=</span> <span class="n">startIterator</span> <span class="o">-</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="c1">// 2</span>
+<span class="kt">int</span> <span class="n">endIndex</span> <span class="o">=</span> <span class="n">endIterator</span> <span class="o">-</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h3 id="binary_search">binary_search</h3>
+
+<p>Returns true if an element exists in a sorted range. Returns false otherwise. Does a binary search to find the item.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range, and the element you want to search for.</li>
+  <li>Returns a bool.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="kt">bool</span> <span class="n">twoExists</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">binary_search</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h1 id="sorted-data-operations">Sorted Data Operations</h1>
+
+<p>Is your data sorted? If yes, then do these efficient operations on them.</p>
+
+<h3 id="merge">merge</h3>
+
+<p>Given two sorted ranges, combine them to form one larger sorted range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, an iterator to the beginning of the second range, an iterator to the end of the second range, and an iterator to the beginning of the resulting range that you want to place all of the data into.</li>
+  <li>Returns an iterator to the end of the resulting range after placing the last item into it.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">merge</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span> 
+
+<span class="c1">// res is { 1, 2, 3, 4, 5, 6, 7, 9 }</span>
+<span class="c1">// 'it' points to the element after 9 in res</span>
+</code></pre></div></div>
+
+<h3 id="inplace_merge">inplace_merge</h3>
+
+<p>Given two consecutive sorted ranges (in the same container), do an in-place merge to sort the entire range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first sorted range, an iterator to the beginning of the second sorted range, and an iterator to the end of the second sorted range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">inplace_merge</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is now { 1, 2, 3, 6, 7, 8 }</span>
+</code></pre></div></div>
+
+<h3 id="includes">includes</h3>
+
+<p>Check if a given a sorted range contains a second (sorted) range (that you specify). (Ex. Does “abcmopxyz” contain “mop”?)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first sorted range, an iterator to the end of the first sorted range. an iterator to the beginning of the second sorted range, and an iterator to the second sorted range.</li>
+  <li>Returns a bool. True if the first range contains the second range, false if it doesn’t.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"abcmopxyz"</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">t</span> <span class="o">=</span> <span class="s">"mop"</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">containsMop</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">includes</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="set_union">set_union</h3>
+
+<p>Given two sorted ranges, creates a new sorted range from the elements that exist in either range. (The union.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, an iterator to the beginning of the second range, an iterator to the end of the second range, and an iterator to the beginning of the resulting range that you want to place all of the data into.</li>
+  <li>Returns an iterator to the element after the last element we placed in the resulting range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">set_union</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// res is { 1 1 2 3 4 0 0 } (Zeroes were from the initialization)</span>
+<span class="c1">// 'it' points to the element after 4 in res.</span>
+</code></pre></div></div>
+
+<p>Notice that there are only two 1’s in the resulting range. <code class="language-plaintext highlighter-rouge">set_union</code> will take the maximum number of an element from one range; it won’t just add them.</p>
+
+<h3 id="set_intersection">set_intersection</h3>
+
+<p>Given two sorted ranges, created a new sorted range from the elements that exist in both ranges. (The intersection.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, an iterator to the beginning of the second range, an iterator to the end of the second range, and an iterator to the beginning of the resulting range that you want to place all of the data into.</li>
+  <li>Returns an iterator to the element after the last element we placed in the resulting range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">set_intersection</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// res is { 1 2 0 0 0 0 0 } (Zeroes were from the initialization)</span>
+<span class="c1">// 'it' points to the element after 2 in res.</span>
+</code></pre></div></div>
+
+<h3 id="set_difference">set_difference</h3>
+
+<p>Given two sorted ranges, created a new sorted range from the elements that exist in the first range that don’t exist in the second range. (The difference.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, an iterator to the beginning of the second range, an iterator to the end of the second range, and an iterator to the beginning of the resulting range that you want to place all of the data into.</li>
+  <li>Returns an iterator to the element after the last element we placed in the resulting range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">set_difference</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// res is { 3 0 0 0 0 0 0 } (Zeroes were from the initialization)</span>
+<span class="c1">// 'it' points to the element after 3 in res.</span>
+</code></pre></div></div>
+
+<h3 id="set_symmetric_difference">set_symmetric_difference</h3>
+
+<p>Given two sorted ranges, created a new sorted range from the elements that exist in one of the ranges but doesn’t exist in the other range. (The symmetric difference.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the first range, an iterator to the end of the first range, an iterator to the beginning of the second range, an iterator to the end of the second range, and an iterator to the beginning of the resulting range that you want to place all of the data into.</li>
+  <li>Returns an iterator to the element after the last element we placed in the resulting range.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">set_symmetric_difference</span><span class="p">(</span><span class="n">v1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">res</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+
+<span class="c1">// res is { 1 3 4 0 0 0 0 } (Zeroes were from the initialization)</span>
+<span class="c1">// 'it' points to the element after 4 in res.</span>
+</code></pre></div></div>
+
+<p>Notice the 1 in res. That’s there because v2 has an extra 1 that v1 does not have.</p>
+
+<h1 id="heap">Heap</h1>
+
+<p>Algorithms regarding heap data structures.</p>
+
+<p>A “heap” is a binary tree that always has maximum element as the root node (top of the tree). It’s used in priority queues. (It can also have the min element as the root.)</p>
+
+<h3 id="make_heap">make_heap</h3>
+
+<p>Rearranges the items in a range so that they form a heap.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">make_heap</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is now { 4 2 3 1 }</span>
+</code></pre></div></div>
+
+<h3 id="push_heap">push_heap</h3>
+
+<p>If the first elements of a range are a heap, but the last item isn’t, then <code class="language-plaintext highlighter-rouge">push_heap</code> will place that last item into it’s correct position.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span> <span class="c1">// v is already a heap.</span>
+
+<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// v is no longer a heap.</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">push_heap</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is now { 5 4 2 3 1 }, which is a heap.</span>
+</code></pre></div></div>
+
+<h3 id="pop_heap">pop_heap</h3>
+
+<p>Given a range for a heap, places the max element at the end of the range, and rearranges the rest of the elements to be a heap again.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span> <span class="c1">// v is a heap.</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">pop_heap</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is now { 4 2 3 1 5 }. (The first 4 elements are a heap.)</span>
+</code></pre></div></div>
+
+<h3 id="sort_heap">sort_heap</h3>
+
+<p>If a range is a heap, rearrange it into sorted order.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns void.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span> <span class="c1">// v is a heap.</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">sort_heap</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// v is now { 1 2 3 4 5 }.</span>
+</code></pre></div></div>
+
+<h3 id="is_heap">is_heap</h3>
+
+<p>Check if a range is a heap.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns a bool. True if the range is a heap, false if it’s not a heap.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span> <span class="c1">// v is a heap.</span>
+
+<span class="kt">bool</span> <span class="n">isHeap</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_heap</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="is_heap_until">is_heap_until</h3>
+
+<p>Find the first place in a range that makes the range fail being a heap.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns an iterator to the first element that makes the range fail being a heap.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_heap_until</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// Points to 200</span>
+</code></pre></div></div>
+
+<h1 id="min-and-max">Min and Max</h1>
+
+<p>These algorithms are related to finding the minimum/maximum element in a range, or when comparing two items.</p>
+
+<h3 id="min">min</h3>
+
+<p>Compares two items and returns the smaller one.</p>
+
+<ul>
+  <li>Pass in two items (<code class="language-plaintext highlighter-rouge">int</code>s, for example) as parameters.</li>
+  <li>Returns the item’s type.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 2</span>
+</code></pre></div></div>
+
+<h3 id="max">max</h3>
+
+<p>Compares two items and returns the larger one.</p>
+
+<ul>
+  <li>Pass in two items (<code class="language-plaintext highlighter-rouge">int</code>s, for example) as parameters.</li>
+  <li>Returns the item’s type.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<p><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6155459918319745" data-ad-slot="5213320505" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<h3 id="minmax">minmax</h3>
+
+<p>Kind of useless in my opinion. Not even going to post the implementation. see <code class="language-plaintext highlighter-rouge">minmax_element</code> for something useful.</p>
+
+<h3 id="min_element">min_element</h3>
+
+<p>Returns an iterator to the smallest element for a given range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns an iterator of the type of the collection.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min_element</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// 'it' points to the 1 in v</span>
+</code></pre></div></div>
+
+<h3 id="max_element">max_element</h3>
+
+<p>Returns an iterator to the largest element for a given range.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns an iterator of the type of the collection.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max_element</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// 'it' points to the 7 in v</span>
+</code></pre></div></div>
+
+<h3 id="minmax_element">minmax_element</h3>
+
+<p>Returns a <code class="language-plaintext highlighter-rouge">pair</code> of iterators to the smallest and the largest elements for a given range. (The smallest is the first item, and the largest is the second item.)</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns an <code class="language-plaintext highlighter-rouge">std::pair</code> of iterators of type of the collection.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">minmax_element</span> <span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="kt">int</span> <span class="n">smallest</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">;</span> <span class="c1">// 1</span>
+<span class="kt">int</span> <span class="n">largest</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">;</span> <span class="c1">// 7</span>
+</code></pre></div></div>
+
+<h1 id="permutations">Permutations</h1>
+
+<p>Permute data into it’s next transformation.</p>
+
+<h3 id="next_permutation">next_permutation</h3>
+
+<p>Rearranges the items in the specified range into the next lexographically greater permutation.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns a bool. True if the range was transformed, false otherwise (if there was no such possible permutation).</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"abc"</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">next_permutation</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// s is now "acb"</span>
+</code></pre></div></div>
+
+<h3 id="prev_permutation">prev_permutation</h3>
+
+<p>Rearranges the items in the specified range into the previous lexographically ordered permutation.</p>
+
+<ul>
+  <li>Pass in an iterator to the beginning of the range, and an iterator to the end of the range.</li>
+  <li>Returns a bool. True if the range was transformed, false otherwise (if there was no such possible permutation).</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"acb"</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">prev_permutation</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="c1">// s is now "abc"</span>
+</code></pre></div></div>
+
+<h1 id="end-notes">End Notes</h1>
+
+<h3 id="notes">Notes</h3>
+
+<ul>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">auto</code> keyword was purposely not used often in this documentation, but use it in your real code.</p>
+  </li>
+  <li>
+    <p>Note that I say “range” a lot, even though I specifically use <code class="language-plaintext highlighter-rouge">vector.begin()</code> and <code class="language-plaintext highlighter-rouge">vector.end()</code> most of the time. Remember that your range can be anywhere in the container you want.</p>
+  </li>
+  <li>
+    <p>Some algorithms also have an overloaded version to provide a custom comparator (for example, <code class="language-plaintext highlighter-rouge">stable_sort</code>), but I’ve ommitted those to keep the examples short.</p>
+  </li>
+  <li>
+    <p>Pay careful attention to the ordering of the parameters, some are not intuitive. (Ex. <code class="language-plaintext highlighter-rouge">nth_element</code>)</p>
+  </li>
+</ul>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li>
+    <p><a href="http://www.cplusplus.com/reference/algorithm/">cplusplus.com’s list of STL algorithms.</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.youtube.com/watch?v=2olsGf6JIkU">Jonathan Boccara’s CppCon Talk about the STL Algorithms.</a></p>
+  </li>
+</ul>
+
+:ET

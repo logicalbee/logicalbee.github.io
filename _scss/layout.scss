@@ -10,6 +10,36 @@
   margin-right: auto;
 }
 
+@media (min-width: 34em){
+.masthead{
+padding-top:1rem;
+text-align:right
+}
+}
+.nav {
+padding-left:0;
+margin-right:-.25rem;
+margin-bottom:0;
+list-style:none
+}
+.nav li{
+display:inline-block;
+}
+.nav a{
+padding:.25rem;
+}
+
+@media (min-width: 34em){
+.masthead-title{
+float:left
+}
+}
+.related ul{
+list-style:none;
+padding-left:0;
+margin-bottom:0;
+}
+
 footer {
   margin-bottom: 2rem;
 }

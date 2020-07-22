@@ -3,16 +3,32 @@ layout: default
 ---
 
 <article class="post">
-
-	<h1>{{ page.title }}</h1>
-
-  <div class="entry">
-    {{ content }}
-  </div>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
-
-  {% include disqus.html disqus_identifier=page.disqus_identifier %}
+  <h1 class="post-title">{{ page.title }}</h1>
+  <p class="post-date">{{ page.date | date_to_string }}</p>
+  <div class="tweet-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="Logicalbee" data-url="{{ post.url }}" data-text="{{ page.title }}">Tweet</a>
+</div>
+  {{ content }}
 </article>
+<script type="text/javascript" language="javascript">
+      var aax_size='300x250';
+      var aax_pubname = '8812-21';
+      var aax_src='302';
+    </script>
+    <script type="text/javascript" language="javascript" src="http://c.amazon-adsystem.com/aax2/assoc.js"></script>
+
+<aside class="related">
+  <h3>Related Posts</h3>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <h4>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h4>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

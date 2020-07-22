@@ -1,59 +1,34 @@
+# Syntax highlighting
+markdown: kramdown 
+highlighter: rouge
+
+
+# Permalinks
 #
-# This file contains configuration flags to customize your site
-#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+#permalink: /:title/
+permalink: date
+# Setup
+title: Logical Bee
+tagline: ❤️
+url: "logicalbee.in"
+baseurl: /
 
-# The name of your site (displayed in the header)
-name: Barry Clark
+author:
+  twitter: iamsushanth_
 
-# A short bio or description (displayed in the header)
-description: Web Developer from Brooklyn
+webmaster_verifications:
+  google: google03d609370ec03c77
 
-# Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
-# Used for Sitemap.xml and your RSS feed
-url: http://barryclark.co
 
-# A URL pointing to your avatar or profile pic
-# To use your Gravatar: (the one that GitHub uses for your profile pic)
-#   1. Go to https://github.com/YOURUSERNAME/
-#   2. Right click and Copy Image URL on your profile pic,
-#   3. Take the first long ID from the URL and paste it in place of mine below
-avatar: http://www.gravatar.com/avatar/36b4f56a7fa40d3c06e5afc4ed0b82b5?s=200
+# Assets
+feed:
+  path: atom.xml
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir: _scss
+  style: :compressed
 
-# Your disqus username, entering this will enable commenting on posts
-disqus: barryclark
-
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics: UA-2530088-4
-
-# Includes an icon in the footer for each username you enter
-footer-links:
-  dribbble: 
-  email: 
-  facebook: 
-  flickr: 
-  github: barryclark
-  instagram: 
-  linkedin: bazclark
-  pinterest: 
-  rss: 
-  twitter: baznyc
-
-#
-# !! You don't need to change any of the configuration flags below !!
-#
-
-baseurl: ""
-markdown: kramdown
-highlighter: pygments
-permalink: /:title
-
-# Emoji please!
-gems:
-  - jemoji
-
-# Exclude these files from your production _site
-exclude:
-    - Gemfile
-    - Gemfile.lock
-    - scss
-    - README.md
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

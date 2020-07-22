@@ -12,7 +12,7 @@ permalink: date
 title: Logical Bee
 tagline: ❤️
 url: "logicalbee.in"
-baseurl: /
+baseurl: "/"
 
 author:
   twitter: iamsushanth_

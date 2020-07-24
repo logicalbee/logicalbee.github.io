@@ -21,6 +21,10 @@ webmaster_verifications:
   google: kU7YYf1R7fRDNpFswgPpw-O_iRnUWdU6DZ1kw2DCFdM
 
 
+twitter:
+  username: iamsushanth_
+  card: summary
+
 # Assets
 feed:
   path: feed.xml

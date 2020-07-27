@@ -5,7 +5,9 @@ description: Affiliate marketing basically promoting products and services using
 permalink: /make-money-affiliate-marketing
 ---
 
-Hey! hey you..! If you are working 9-5 job wich you dont like, then you are in the right place. there is much more we can achive in our life than that. 
+Hey! hey you..! 
+
+If you are working 9-5 job wich you dont like, then you are in the right place. there is much more we can achive in our life than that. 
 [making money online](/how-to-make-money-online-in-india) is an art, In this pandamic situation there is no garantee that your job may not be served longer, be your own boss, and live a life with freedom.
 
 
@@ -57,13 +59,18 @@ If you are in the “Dog Training” niche, you should promote a “How to train
 
 ![Choose-traffic](images/social.jpg){: height="300px" width="660px"}
 
-The third step is to choose a traffic source or platform to promote your affiliate product & send people to your affiliate link.
+The third step is to choose a traffic source to promote your Product & bring people to your affiliate links.
 It doesn’t matter how good the product is, if people do not see it. You need a constant stream of targeted people seeing your product/offer.
-This is how you make sales & affiliate commissions. More traffic = more sales = more money for you
+This is how you make sales & affiliate commissions. 
+
+> More traffic = more sales = Earn more money
+
 There are multiple traffic sources and platforms to choose from, example: Facebook, Instagram, Youtube etc.
   
- Other than this you can also start a blog and write articles etc.
+Other than you can start a blog and write articles etc.
+
 As a beginner you should stick to 1 traffic source until you are generating at least 1 sale per day.
+
 After this, if required you can branch out into other traffic sources/platforms.
 
 ### STEP 4: Add value & build your brand
@@ -72,9 +79,12 @@ After this, if required you can branch out into other traffic sources/platforms.
 
 The fourth step is to add value and build your brand.
   
- You can do this by using a process called “Content Marketing”. Content marketing basically means that you create free content that your niche/audience is interested in.
-Example: If you are in the “Dog Training” niche, you can make free videos on Youtube about “How to train your dog” etc.
+You can do this by using a process called “Content Marketing”. Content marketing basically means that you create free content that your niche/audience is interested in.
+
+Example: If you are in the “Traveling” niche, you can make free videos on Youtube about “Bast places we can visit without visa” etc.
+
 By adding value and providing free content to your audience, you are actually building trust and a loyal following of engaged fans.
+
 The more your audience relate to and trust you, the higher chance that they will buy a product/service that you recommend i.e your affiliate product.
 
 ### STEP 5: Build an automated sales funnel
@@ -82,11 +92,21 @@ The more your audience relate to and trust you, the higher chance that they will
 ![Brand-fanal](images/fanal.jpg){: height="300px" width="660px"}
 
 The fifth step is to build an automated sales funnel which is capable of making you money while you sleep.
+
 An automated sales funnel basically nurtures leads and turns them into sales.
-Remember? More sales = more commissions = more money for you
+Remember? 
+
+> More sales = more commissions = more money
+
 There are 3 main things you will need to build an automated sales funnel:
-OptIn/Squeeze page: ​This is a single page which is highly focused on only 1 action i.e you want to convert visitors into leads (collect email addresses).
+
+- OptIn/Squeeze page:
+This is a single page which is highly focused on only 1 action i.e you want to convert visitors into leads (collect email addresses).
   
-Email marketing platform: T​ his is a software (free & paid options available) that is used to build and save a list of all the email addresses you have collected using the optin page.
-Email sales funnel/automation: W​ ithin your email marketing platform, you will have an option to create and setup automated email sequences that are designed to nurture your leads and convert them into sales.
+- Email marketing platform:
+This is a software (free & paid options available) that is used to build and save a list of all the email addresses you have collected using the optin page.
+
+- Email sales funnel/automation:
+W​ithin your email marketing platform, you will have an option to create and setup automated email sequences that are designed to nurture your leads and convert them into sales.
+
 And those are The 5 Steps To Making Money With Affiliate Marketing.

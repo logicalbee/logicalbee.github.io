@@ -8,27 +8,3 @@
 @import "code";
 @import "layout";
 
-:root {
-  --body-bg: #fafafa;
-  --body-color: #555;
-  --link-color: #222;
-  --link-color-hover: #000;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --body-bg: #212529;
-    --body-color: #6c757d;
-    --link-color: #dee2e6;
-    --link-color-hover: #fff;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  img {
-    opacity: .75;
-    transition: opacity .2s ease-in-out;
-  }
-  img:hover {
-    opacity: 1;
-  }
-}

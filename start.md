@@ -1,6 +1,7 @@
 ---
 layout: landing
-title: Start
+sitemap:
+  exclude: 'yes'
 ---
 
 <center>

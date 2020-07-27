@@ -8,4 +8,27 @@
 @import "code";
 @import "layout";
 
-@media (prefers-color-scheme: dark){:root{--body-bg: #282c34;--body-color: #abb2bf;--secondary-color: rgba(255,255,255,.5);--link-color: rgba(255,255,255,.75);--link-color-hover: #fff;--link-border-color: rgba(255,255,255,.25);--link-border-color-hover: rgba(255,255,255,.5);--heading-color: #dee2e6;--kbd-color: rgba(255,255,255,.5);--kbd-bg: rgba(255,255,255,.1);--hr-color: rgba(255,255,255,.1);--pre-bg: rgba(0,0,0,.1);--code-color: #e5c07b;--code-snippet-border: rgba(255,255,255,.1);--blockquote-border: rgba(255,255,255,.1)}}
+:root {
+  --body-bg: #fafafa;
+  --body-color: #555;
+  --link-color: #222;
+  --link-color-hover: #000;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg: #212529;
+    --body-color: #6c757d;
+    --link-color: #dee2e6;
+    --link-color-hover: #fff;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  img {
+    opacity: .75;
+    transition: opacity .2s ease-in-out;
+  }
+  img:hover {
+    opacity: 1;
+  }
+}

@@ -50,5 +50,15 @@ title: Best Deals - 2020
 </div>
 <br>
 
+<table>
+<caption>RECOMMENDED THEME FOR BLOG</caption>
+<tr>
+<td><img src="/images/astra.png" alt="bluehost logo" class="nopin"></td>
+<td><b>Astra</b> Super Fast Performance
+Astra is made for speed. It is the most lightweight theme available in the market </td>
+<td><a href="https://wpastra.com/?bsf=5616" rel="nofollow noopener noreferrer">Visit<br />Astra</a></td>
+</tr>
+</table>
+
 <a href="http://www.semrush.com/sem/?ref=4066591676&utm_campaign=aio_ campaign&utm_source=berush&utm_medium=promo&utm_term=51" target="_blank"><img width="720" height="300" src="https://pm.berush.com/source/banners/image/6/en/720x300_ver2_en.png" alt="SEMrush" /></a>
 

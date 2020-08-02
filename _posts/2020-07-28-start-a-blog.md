@@ -48,6 +48,8 @@ If Yes! Here are four tips which help you to find the best suitable name for you
 - Don’t Use Numbers
 - Always Use TLD Extension
 
+<a href="https://namecheap.pxf.io/c/2424938/459741/5618" id="459741"><img src="//a.impactradius-go.com/display-ad/5618-459741" border="0" alt="Create your Web Presence with Namecheap" width="300" height="250"/></a><img height="0" width="0" src="//namecheap.pxf.io/i/2424938/459741/5618" style="position:absolute;visibility:hidden;" border="0" />
+
 Note: Which blogging platform should you choose
 There are multiple ways to create a blog
 

@@ -1,0 +1,19 @@
+I"u<p>I’m a software Engineer and Content creator. I like to build things and document the journey. See my best posts below or check out the Blog . You can also find me on Twitter, YouTube. If you like my writing, subscribe to get posts in your inbox.</p>
+
+<p>You can contact me at <a href="mailto:sushanth.uk@gmail.com">sushanth.uk@gmail.com</a></p>
+
+<div class="widget-content">
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-ytsubscribe" data-channelid="UC_x5XG1OV2P6uZZ5FSM9Ttw" data-layout="full"></div>
+		    <div class="share followgooglewrapper">
+<button data-href="https://twitter.com/intent/follow?original_referer=http://googledevelopers.blogspot.in/&amp;screen_name=googledevs" onclick="sharingPopup(this);" id="twitter-share"><span class="twitter-follow">Follow @googledevs</span></button>
+<script>     
+      function sharingPopup (button) {
+      var url = button.getAttribute("data-href");
+	    window.open(
+ url,'popUpWindow','height=500,width=500,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
+          }
+    </script>
+</div>
+</div>
+:ET

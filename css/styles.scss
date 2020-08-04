@@ -4,8 +4,138 @@
 
 // Imports
 @import "base";
-@import "type";
+//@import "type";
 @import "code";
 @import "layout";
 
 
+
+
+
+:root{--gutter: 1.5rem;--font: -apple-system, BlinkMacSystemFont; --body-bg: #fafafa;--body-color: #555;--secondary-color: #7a7a7a;--link-color: #222;--link-color-hover: #000;--link-border-color: rgba(0,0,0,.25);--link-border-color-hover: rgba(0,0,0,.5);--heading-color: #333;--hr-color: rgba(0,0,0,.05);--kbd-color: var(--body-color);--kbd-bg: #eee;--pre-bg: #fff;--code-color: rgba(212, 73, 80, 1);--code-snippet-border: rgba(0,0,0,.05);--blockquote-border: #e5e5e5}@media (prefers-color-scheme: dark){:root{--body-bg: #282c34;--body-color: #abb2bf;--secondary-color: rgba(255,255,255,.5);--link-color: rgba(255,255,255,.75);--link-color-hover: #fff;--link-border-color: rgba(255,255,255,.25);--link-border-color-hover: rgba(255,255,255,.5);--heading-color: #dee2e6;--kbd-color: rgba(255,255,255,.5);--kbd-bg: rgba(255,255,255,.1);--hr-color: rgba(255,255,255,.1);--pre-bg: rgba(0,0,0,.1);--code-color: #e5c07b;--code-snippet-border: rgba(255,255,255,.1);--blockquote-border: rgba(255,255,255,.1)}img{opacity:.75;transition:opacity .5s ease-in-out}img:hover{opacity:1}}
+
+*{box-sizing:border-box}html{font-family:var(--font);font-size:16px}@media (min-width: 54em){
+
+html {
+  font-family: 'Verdana';
+  font-size: 14px;
+  line-height: 1.5;
+
+  @media (min-width: 38em) {
+    font-size: 19px;
+  }
+}
+}
+
+// Adding 'Contents' headline to the TOC
+#markdown-toc::before {
+    content: "Contents";
+    font-weight: bold;
+}
+
+
+// Using numbers instead of bullets for listing
+#markdown-toc ul {
+    list-style: decimal;
+}
+
+#markdown-toc {
+    border: 1px solid #aaa;
+    padding: 1.5em;
+    list-style: decimal;
+    display: inline-block;
+    
+}
+
+ .form-container {
+      position: relative;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 650px;
+      min-height: 250px;
+      margin: 0 auto;
+      box-shadow: 0 0px 0px 0 #000;
+      margin-bottom: 2rem;
+    }
+
+    input, button {
+      appearance: none;
+      border: none;
+      font-size: inherit;
+      background: #eee;
+      border-radius: 3px;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    input {
+      margin-bottom: 1rem;
+    }
+
+    input:focus {
+      outline: 1px solid var(--accent);
+    }
+
+    button {
+      color: #fff;
+      cursor: pointer;
+      background-color: var(--purple);
+    }
+
+    button:hover {
+      background-color: var(--accent);
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+   
+
+    @keyframes rotate {
+     100% { transform: rotate(360deg); }
+    }
+
+    @keyframes dash {
+     0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; }
+     50% { stroke-dasharray: 89,200; stroke-dashoffset: -35; }
+     100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; }
+    }
+
+    .loading {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+    }
+
+    .loading-spinner svg {
+      position: relative;
+      animation: rotate 2s linear infinite;
+      height: 50px;
+      width: 50px;
+    }
+
+    .loading-spinner circle {
+      stroke: var(--accent);
+      stroke-dasharray: 1,200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      animation: dash 1.5s ease-in-out infinite;
+    }

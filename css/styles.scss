@@ -11,21 +11,10 @@
 
 
 
+@media (prefers-color-scheme: dark)
+{:root{--body-bg: #282c34;--body-color: #abb2bf;--secondary-color: rgba(255,255,255,.5);--link-color: rgba(255,255,255,.75);--link-color-hover: #fff;--link-border-color: rgba(255,255,255,.25);--link-border-color-hover: rgba(255,255,255,.5);--heading-color: #dee2e6;--kbd-color: rgba(255,255,255,.5);--kbd-bg: rgba(255,255,255,.1);--hr-color: rgba(255,255,255,.1);--pre-bg: rgba(0,0,0,.1);--code-color: #e5c07b;--code-snippet-border: rgba(255,255,255,.1);--blockquote-border: rgba(255,255,255,.1)}img{opacity:.75;transition:opacity .5s ease-in-out}img:hover{opacity:1}}
 
-:root{--gutter: 1.5rem;--font: -apple-system, BlinkMacSystemFont; --body-bg: #fafafa;--body-color: #555;--secondary-color: #7a7a7a;--link-color: #222;--link-color-hover: #000;--link-border-color: rgba(0,0,0,.25);--link-border-color-hover: rgba(0,0,0,.5);--heading-color: #333;--hr-color: rgba(0,0,0,.05);--kbd-color: var(--body-color);--kbd-bg: #eee;--pre-bg: #fff;--code-color: rgba(212, 73, 80, 1);--code-snippet-border: rgba(0,0,0,.05);--blockquote-border: #e5e5e5}@media (prefers-color-scheme: dark){:root{--body-bg: #282c34;--body-color: #abb2bf;--secondary-color: rgba(255,255,255,.5);--link-color: rgba(255,255,255,.75);--link-color-hover: #fff;--link-border-color: rgba(255,255,255,.25);--link-border-color-hover: rgba(255,255,255,.5);--heading-color: #dee2e6;--kbd-color: rgba(255,255,255,.5);--kbd-bg: rgba(255,255,255,.1);--hr-color: rgba(255,255,255,.1);--pre-bg: rgba(0,0,0,.1);--code-color: #e5c07b;--code-snippet-border: rgba(255,255,255,.1);--blockquote-border: rgba(255,255,255,.1)}img{opacity:.75;transition:opacity .5s ease-in-out}img:hover{opacity:1}}
 
-*{box-sizing:border-box}html{font-family:var(--font);font-size:16px}@media (min-width: 54em){
-
-html {
-  font-family: 'Verdana';
-  font-size: 14px;
-  line-height: 1.5;
-
-  @media (min-width: 38em) {
-    font-size: 19px;
-  }
-}
-}
 
 // Adding 'Contents' headline to the TOC
 #markdown-toc::before {
@@ -47,7 +36,7 @@ html {
     
 }
 
- .form-container {
+.form-container {
       position: relative;
       background: #fff;
       padding: 1rem;
@@ -139,3 +128,5 @@ html {
       stroke-linecap: round;
       animation: dash 1.5s ease-in-out infinite;
     }
+
+    

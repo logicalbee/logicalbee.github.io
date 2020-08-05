@@ -11,30 +11,9 @@
 
 
 
-@media (prefers-color-scheme: dark)
-{:root{--body-bg: #282c34;--body-color: #abb2bf;--secondary-color: rgba(255,255,255,.5);--link-color: rgba(255,255,255,.75);--link-color-hover: #fff;--link-border-color: rgba(255,255,255,.25);--link-border-color-hover: rgba(255,255,255,.5);--heading-color: #dee2e6;--kbd-color: rgba(255,255,255,.5);--kbd-bg: rgba(255,255,255,.1);--hr-color: rgba(255,255,255,.1);--pre-bg: rgba(0,0,0,.1);--code-color: #e5c07b;--code-snippet-border: rgba(255,255,255,.1);--blockquote-border: rgba(255,255,255,.1)}img{opacity:.75;transition:opacity .5s ease-in-out}img:hover{opacity:1}}
+:root{--gutter: 1.5rem;--font: -apple-system, BlinkMacSystemFont, "Lato";--body-bg: #fafafa;--body-color: #555;--secondary-color: #7a7a7a;--link-color: #222;--link-color-hover: #000;--link-border-color: rgba(0,0,0,.25);--link-border-color-hover: rgba(0,0,0,.5);--heading-color: #333;--hr-color: rgba(0,0,0,.05);--kbd-color: var(--body-color);--kbd-bg: #eee;--pre-bg: #fff;--code-color: rgba(212, 73, 80, 1);--code-snippet-border: rgba(0,0,0,.05);--blockquote-border: #e5e5e5}@media (prefers-color-scheme: dark){:root{--body-bg: #282c34;--body-color: #abb2bf;--secondary-color: rgba(255,255,255,.5);--link-color: rgba(255,255,255,.75);--link-color-hover: #fff;--link-border-color: rgba(255,255,255,.25);--link-border-color-hover: rgba(255,255,255,.5);--heading-color: #dee2e6;--kbd-color: rgba(255,255,255,.5);--kbd-bg: rgba(255,255,255,.1);--hr-color: rgba(255,255,255,.1);--pre-bg: rgba(0,0,0,.1);--code-color: #e5c07b;--code-snippet-border: rgba(255,255,255,.1);--blockquote-border: rgba(255,255,255,.1)}img{opacity:.75;transition:opacity .5s ease-in-out}img:hover{opacity:1}}*{box-sizing:border-box}html{font-family:var(--font);font-size:16px}@media (min-width: 48em){html{font-size:20px}}body{padding:2rem var(--gutter);margin:0;line-height:1.5;color:var(--body-color);background-color:var(--body-bg)}p{position:relative;margin-top:0;margin-bottom:1rem}p img+em{display:block;max-width:75%;padding:0;margin:-1rem auto 0;font-family:var(--font);font-size:.6875rem;font-style:normal;color:#7a7a7a}
 
 
-
-// Adding 'Contents' headline to the TOC
-#markdown-toc::before {
-    content: "Contents";
-    font-weight: bold;
-}
-
-
-// Using numbers instead of bullets for listing
-#markdown-toc ul {
-    list-style: decimal;
-}
-
-#markdown-toc {
-    border: 1px solid #aaa;
-    padding: 1.5em;
-    list-style: decimal;
-    display: inline-block;
-    
-}
 
 .form-container {
       position: relative;
@@ -83,50 +62,6 @@
 
     .is-hidden {
       display: none !important;
-    }
-
-   
-
-    @keyframes rotate {
-     100% { transform: rotate(360deg); }
-    }
-
-    @keyframes dash {
-     0% { stroke-dasharray: 1,200; stroke-dashoffset: 0; }
-     50% { stroke-dasharray: 89,200; stroke-dashoffset: -35; }
-     100% { stroke-dasharray: 89,200; stroke-dashoffset: -124; }
-    }
-
-    .loading {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-    }
-
-    .loading-spinner svg {
-      position: relative;
-      animation: rotate 2s linear infinite;
-      height: 50px;
-      width: 50px;
-    }
-
-    .loading-spinner circle {
-      stroke: var(--accent);
-      stroke-dasharray: 1,200;
-      stroke-dashoffset: 0;
-      stroke-linecap: round;
-      animation: dash 1.5s ease-in-out infinite;
     }
 
     

@@ -1,30 +1,25 @@
----
-layout: landing
----
-
+I"J
 <center>
 
-<div style="text-align: center;"><span
- style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span
- style="color: rgb(181, 1, 0); font-family: tahoma; font-size: 56px; font-weight: bold;">100%
-FREE!<br>
+<div style="text-align: center;"><span style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span style="color: rgb(181, 1, 0); font-family: tahoma; font-size: 56px; font-weight: bold;">100%
+FREE!<br />
 </span></span></div>
 
 <h1 style="text-align: center;">WORK FROM HOME</h1>
-<h2 style="text-align: center;">How To Start Earning <span style="color: #d00e89;">$100 to $1,000+ Per Month</span><br> Start Today</h2>
+<h2 style="text-align: center;">How To Start Earning <span style="color: #d00e89;">$100 to $1,000+ Per Month</span><br /> Start Today</h2>
 <p style="text-align: center;"><span style="text-decoration: underline;">No experience required</span></p>
 
 <div>
-<form name="submit-to-google-sheet" >
-      <input name="email" type="email" placeholder="Email" required>
+<form name="submit-to-google-sheet">
+      <input name="email" type="email" placeholder="Email" required="" />
       <button type="submit" style="color: rgb(255, 255, 255); background-color: rgb(9, 158, 51); font-size: 24px;">YES! I WANT INSTANT ACCESS</button>
  </form>
  
 
  <p class="loading js-loading is-hidden">
- 	<br>
+ 	<br />
     <span style="color: #d00e89;"> <a href="/next">Click here to Get your Free ebook</a> :) </span>
-    <br>
+    <br />
  </p>
  <p class="js-error-message is-hidden">Error!</p>
 </div>
@@ -69,3 +64,5 @@ FREE!<br>
    return false;
 }
   </script>
+
+:ET

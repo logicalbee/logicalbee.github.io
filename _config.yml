@@ -9,7 +9,7 @@ highlighter: rouge
 #permalink: /:title/
 permalink: date
 # Setup
-title: Logical Bee
+title: LogicalBee
 tagline: ❤️
 url: "https://logicalbee.in"
 baseurl: ""

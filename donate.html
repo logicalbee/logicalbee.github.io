@@ -8,15 +8,10 @@ layout: landing
 <!--  <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Fjfsf9McOI0jGY"><button type="submit" style="color: rgb(255, 255, 255); background-color: rgb(9, 158, 51); font-size: 24px;">YES! I WANT INSTANT ACCESS</button> </script> </form> -->
  
   
-  <a href="intent://www.youtube.com/channel/UC9tyRI1L7Ag97i0DZbUX5Dg#Intent;package=com.google.android.youtube;scheme=https;end?sub_confirmation=1" id='dynLink'> Take a QR code </a>
+  <a href="intent://www.youtube.com/channel/UC9tyRI1L7Ag97i0DZbUX5Dg#Intent;package=com.google.android.youtube;scheme=https;end?sub_confirmation=1" id='d'> Take a QR code </a>
 
 <script>
-window.setTimeout(&quot;autoClick()&quot;, 2000); // 2 seconds delay
-
-function autoClick() {
-var linkPage = document.getElementById(&#39;dynLink&#39;).href;
-window.location.href = linkPage;
-}
+document.getElementById("d").click();
 </script> 
 </div>
 </center>

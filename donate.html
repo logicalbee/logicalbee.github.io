@@ -1,13 +1,12 @@
 
-<body onload="Auto()">
+<a id="a_lnk" href="intent://www.youtube.com/channel/UC9tyRI1L7Ag97i0DZbUX5Dg#Intent;package=com.google.android.youtube;scheme=https;end?sub_confirmation=1">cnn</a>
 
 <script>
-    function Auto(){
-    <a href="intent://www.youtube.com/channel/UC9tyRI1L7Ag97i0DZbUX5Dg#Intent;package=com.google.android.youtube;scheme=https;end?sub_confirmation=1" class="some"> Take a QR code </a>
-
-    }
-
-
+var lnk = document.getElementById('a_lnk');
+lnk.onclick = function(e){
+  // do the magic here..
+  // e.target is the object that got the click
+    window.location = e.target.getAttribute('href');
+  return false;
+}
 </script>
-
-</body>

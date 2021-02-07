@@ -6,6 +6,7 @@ date:   2018-05-14 20:20:00 +0000
 author: Dale
 intro: Many front end developers shy away from the command line preferring GUI alternatives however it's now a common requirement in the workplace, here are 10 things every front end developer should know in terminal.
 categories: terminal osx
+description: he command line can seem very intimidating to a new user and some developers will keep it at and arms distance because it conjures up images of movies such as the Matrix
 permalink: /10-things-a-front-end-developer-should-know-in-terminal/
 ---
 

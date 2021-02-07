@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Logicalbee is a creative web development blog that shares ideas,
   helpful resources, tips and tricks on front end dev and design.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://ambraze.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://logicalbee.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 google_analytics: 
 google_adsense: 
 permalink: pretty
@@ -41,6 +41,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

@@ -1,0 +1,96 @@
+I"F7<p>When you first see higher order functions and how they were written it can feel a little intimidating especially if you’re not fully acclimated to es6 syntax. Reading that they’re “functions that return functions”, “functions that modify other functions”, “functions that accept functions as arguments” seeing code like <code class="language-plaintext highlighter-rouge">isLessThan = x =&gt; y =&gt; y &lt; x;</code> or <code class="language-plaintext highlighter-rouge">isLessThan(a)(b)</code>.</p>
+
+<p>What some people don’t realise is that they’re probably already using higher order functions, the Array primitive has some higher order methods like <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">reduce</a> which are commonly used to manipulate lists in front end frameworks.</p>
+
+<p>If you have used some of these you may have even combined them like this trivial example that returns a list of female user emails</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">femEmailList</span> <span class="o">=</span> <span class="nx">myUsers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">usr</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">gender</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">female</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">femUsr</span> <span class="o">=&gt;</span> <span class="nx">femUsr</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+</code></pre></div></div>
+<p>This is known as function composition where the result of one function becomes the input of the next and so on, this is a core concept in functional programming and allows you to compose smaller functions into bigger ones.</p>
+
+<p>Let’s go one step further, I often find the easiest way to learn how something works is to take it apart and analyse it piece by piece, so lets rebuild these methods and replicate how they work.</p>
+
+<h3 id="map">map</h3>
+<p>This method is a pure function that iterates through an array and returns a new array, it takes a function for the first argument which it calls with each item in the array and returns a new array with the functions results, confusing? take a look at the example below.</p>
+
+<p>You may have a list of user objects that you need to get email addresses from, lets get an array of user emails with map:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">emailList</span> <span class="o">=</span> <span class="nx">myUsers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>map is part of the array prototype which means any array will have this method available to it but lets recreate the functionality of map in a custom function called “iDesignMap”.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">iDesignMap</span> <span class="o">=</span> <span class="nx">arrayToMap</span> <span class="o">=&gt;</span> <span class="nx">funcToRun</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">newArray</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">arrayToMap</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">i</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">funcToRun</span><span class="p">(</span><span class="nx">arrayToMap</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">arrayToMap</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">newArray</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">emailList</span> <span class="o">=</span> <span class="nx">iDesignMap</span><span class="p">(</span><span class="nx">myUsers</span><span class="p">)(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This may look complicated at first but just concentrate at the bottom where “iDesignMap” is called.
+In functional programming languages functions are values, we assign the function “iDesignMap” to the constant “emailList”. “iDesignMap” takes an array “myUsers” and returns a function (itself) that takes another function <code class="language-plaintext highlighter-rouge">user =&gt; user.email</code> as an argument which is uses internally to return a new array.</p>
+
+<p>“iDesignMap” iterates over the array “arrayToMap” and calls “funcToRun” with each value, index and the original array. The returned result gets pushed into a new array which gets returned at the end.</p>
+
+<p>Another common use case is where you take an array of data and map to DOM elements, for example you may want to display a list of comments in React for example it would look like this.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">comments</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">comments</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">comment</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">comment</span><span class="p">.</span><span class="nx">body</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="filter">filter</h3>
+
+<p>Filter although similar to map is critically different as it returns a new filtered version of the original array rather than transforming each value.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">maleUsers</span> <span class="o">=</span> <span class="nx">myUsers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">gender</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">male</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+<p>The function argument must return a boolean, if it returns true for that array item it will be returned in the new array.</p>
+
+<p>Lets recreate filter as a custom function.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">iDesignFilter</span> <span class="o">=</span> <span class="nx">arrayToMap</span> <span class="o">=&gt;</span> <span class="nx">funcToRun</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">newArray</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">arrayToMap</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">i</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">funcToRun</span><span class="p">(</span><span class="nx">arrayToMap</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">arrayToMap</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">newArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arrayToMap</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">newArray</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">isMale</span> <span class="o">=</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">gender</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">male</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">maleUsers</span> <span class="o">=</span> <span class="nx">iDesignFilter</span><span class="p">(</span><span class="nx">myUsers</span><span class="p">)(</span><span class="nx">isMale</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>“iDesignFilter” takes an array “arrayToMap” and returns a function that takes another function “funcToRun” as an argument, when “iDesignFilter” iterates over “arrayToMap” it calls “funcToRun” with each value, index and the original array then finally returns a new filtered array.</p>
+
+<h3 id="it-still-doesnt-look-right">It still doesn’t look right…</h3>
+
+<p>The main difference between these custom functions and the native counterparts is that the custom functions are not part of the array prototype and therefore must be passed the array, however you can add them to the prototype and use “this” in place of “arrayToMap”.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">iDesignFilter</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">funcToRun</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">newArray</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">i</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">funcToRun</span><span class="p">(</span><span class="k">this</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">,</span> <span class="k">this</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">newArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">newArray</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">maleUsers</span> <span class="o">=</span> <span class="nx">myUsers</span><span class="p">.</span><span class="nx">iDesignFilter</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">gender</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">male</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>After you add this method to the prototype it will be available to all Array types just like “map” and “filter”.
+Of course this example is trivial because the methods already exist but now you can understand how higher order functions work, where they are used and how they are integrated into the language already.</p>
+:ET

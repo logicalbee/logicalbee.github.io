@@ -1,0 +1,158 @@
+I"MC<p>React portals were recently added in version 16, this enables you to render children outside of the parent component.</p>
+
+<blockquote>
+  <p>Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.</p>
+</blockquote>
+
+<p><a href="https://reactjs.org/docs/portals.html">- React Documentation</a></p>
+
+<p>What’s so great about that?
+Well the most common use cases are going to be components that need to be rendered at a top level but also need to retrieve props from nested parents, a good example is a modal.</p>
+
+<p>So how do you use this new feature?
+lets render a modal with React portal…</p>
+
+<p><a rel="Demo" href="http://idesignpixels.com/react-portals" target="_blank">
+    <button>View Demo</button>
+  <a></a>
+  <a rel="Code" href="https://github.com/idesignpixels/react-portals" target="_blank">
+    <button>View Code</button>
+  <a></a></a></a></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- index.html --&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"modal-root"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app-root"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Modal.jsx</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">Modal</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">componentWillMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modalRoot</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">modal-root</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">show</span><span class="p">,</span> <span class="nx">children</span><span class="p">,</span> <span class="nx">backDropClick</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">show</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">createPortal</span><span class="p">((</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">backdrop</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">backDropClick</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">modal</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()}</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">modalRoot</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There are a few extras in here that we’ll discuss later but the main part is what we’re returning if <code class="language-plaintext highlighter-rouge">props.show</code> is true.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ReactDOM.createPortal</code> has two parameters the first is a “renderable React child” most commonly a html element or react component in this case our modal markup, the second parameter is a DOM element to render the former in which is a div with the id of “modal-root” from our index.html.</p>
+
+<p>Pretty easy right? simply return the <code class="language-plaintext highlighter-rouge">ReactDOM.createPortal</code> method with the content and where you want to render it!</p>
+
+<p><img src="https://i.imgur.com/ruwSbgO.png" alt="React portal modal example" title="React portal modal" width="746" height="522" /></p>
+
+<p>So how to create a modal? it depends on the style your after but I’m going with a simple centered box to render a card with header, message, action buttons. It will also need a backdrop that makes the modal “pop off” the screen.</p>
+
+<p>So back to those extras you may have noticed in the example.
+We have the backdrop, a div with the class of “backdrop” that’s styled the following way.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.backdrop</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">bottom</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">right</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.5</span><span class="p">);</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">250</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This makes it behave as a full screen dark translucent overlay that uses flexbox to center it’s children on both axis.
+The other part <code class="language-plaintext highlighter-rouge">onClick={backDropClick}</code> is a function passed as a prop that gets called when the backdrop is clicked, in the demo I use it to close the modal by altering the prop passed as show to be false.</p>
+
+<p>On to the modal itself which is simply styled to contain it children to a specified dimension.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.modal</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">350px</span><span class="p">;</span>
+  <span class="nl">max-height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Because we want to reuse modal it simply contains the children prop so that it can be composed with any other components in a modal instance.
+It does have a “onClick” attribute <code class="language-plaintext highlighter-rouge">onClick={e =&gt; e.stopPropagation()}</code> this is to stop click event bubbling up to the backdrop so now you can click the modal or its children without it closing from <code class="language-plaintext highlighter-rouge">props.backDropClick</code>.</p>
+
+<p>Right! we’ve created the modal component now we just need to implement it around the app.
+Here I have created an example of how you might do that.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* SomeComponent.jsx */</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">SomeComponent</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">openModal</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">openModal</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">closeModal</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">closeModal</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">modal</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">openModal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">modal</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">closeModal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">modal</span><span class="p">:</span> <span class="kc">false</span> <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">doSomething</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">You did something!</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">openModal</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Do</span> <span class="nx">something</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">Modal</span> <span class="nx">show</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">modal</span><span class="p">}</span> <span class="nx">backDropClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">closeModal</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Card</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Modal</span><span class="dl">"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">CardContent</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Are</span> <span class="nx">you</span> <span class="nx">sure</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span> <span class="k">do</span> <span class="nx">something</span><span class="p">?</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/CardContent</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">CardActions</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nx">CardAction</span> <span class="nx">label</span><span class="o">=</span><span class="dl">"</span><span class="s2">Close</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">closeModal</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>              <span class="o">&lt;</span><span class="nx">CardAction</span> <span class="nx">label</span><span class="o">=</span><span class="dl">"</span><span class="s2">Confirm</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/CardActions</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/Card</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/Modal</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/Fragment</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In “SomeComponent” we need to use a modal to confirm a user action, so we import and use the modal component, use local state to control the “show” prop and give the “backDropClick” prop a method to set the show state to false.
+Then we pass what we want to display for the modal, in this case a custom card component that has some actions that we can use to cancel or confirm.</p>
+
+<p>You may have noticed I used a <a href="https://reactjs.org/docs/fragments.html">Fragment</a> component, if you haven’t seen this before don’t worry it’s just a way of returning a single component that doesn’t add additional markup it is not required and you can use whatever you like, you can read more about it <a href="https://reactjs.org/docs/fragments.html">here</a>.</p>
+
+<p>And there you have it, using React portals to render modals from anywhere in your application! please check out the <a href="http://idesignpixels.com/react-portals">demo</a> and <a href="https://github.com/idesignpixels/react-portals">code</a> for this post for further inspiration including using <a href="https://github.com/chenglou/react-motion">react-motion</a> to add some smooth animations!</p>
+
+<p><a rel="Demo" href="http://idesignpixels.com/react-portals" target="_blank">
+    <button>View Demo</button>
+  <a></a>
+  <a rel="Code" href="https://github.com/idesignpixels/react-portals" target="_blank">
+    <button>View Code</button>
+  <a></a></a></a></p>
+
+:ET

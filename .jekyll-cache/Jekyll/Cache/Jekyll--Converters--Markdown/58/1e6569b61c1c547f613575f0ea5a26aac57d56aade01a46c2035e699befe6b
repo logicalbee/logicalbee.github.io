@@ -1,0 +1,103 @@
+I"'(<p>Jekyll is a great way to write a blog because it’s quick to get started, easy to maintain and if like myself you use <a href="https://pages.github.com/">Github Pages</a> it’s also free to host.
+But how do you start monetising your new blog to get some passive income from your readers?</p>
+
+<p>There are many ways to do this with ads and affiliate marketing but probably the most popular is Google AdSense, it gives you tons of analytics and also offers plenty of customisation so that it looks and feels like part of your site.</p>
+
+<p>If you don’t have and AdSense account already and have only just started your blog or haven’t yet created much content you may find this affects your application for an account as they require that you have enough content and not be “under construction”. I found that a few blog posts was enough to get me accepted.</p>
+
+<p>If you haven’t got an AdSense account yet sign up here <a href="https://www.google.co.uk/adsense">google.co.uk/adsense</a></p>
+
+<p>When you first sign up for Google AdSense you will be told to add some script just before the closing head tag, You can just add this straight into your head include however there is a much nicer way to do this that can also make it easier for adding custom “ad units”, more on that later.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config.yml</span>
+<span class="na">google_adsense</span><span class="pi">:</span> <span class="s">ca-pub-0000000000000000</span>
+</code></pre></div></div>
+<p>Start by adding a global config setting called “google_adsense” to your config file.
+In the code that AdSense provides you’ll find you’re publisher ID that starts with “ca-pub”, you can also find this in AdSense by going to Settings &gt; Account &gt; Account information.
+Add this as a string to your “google_adsense” setting.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _includes/google-adsense.html --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="p">(</span><span class="nx">adsbygoogle</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">adsbygoogle</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">push</span><span class="p">({</span>
+  <span class="na">google_ad_client</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="na">enable_page_level_ads</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+<p>Next create a new google-adsense.html in your includes then paste the code that AdSense provided. Replace your publisher ID with the global setting you created earlier.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _includes/head.html --&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+  {% if jekyll.environment == 'production' and page.layout == 'post' and site.google_adsense %}
+  {% include google-adsense.html %}
+  {% endif %}
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div>
+
+<p>Now in your head you can include the “google-adsense.html”.
+This by it self is enough to get AdSense working in your site and if you look at the template above it will only display in production environment on blog posts not on contact pages etc.
+If all went well you should see an ad like the one for this article below.</p>
+
+<p>The above example uses “auto ads” which lets google automatically place ads where it thinks is best, you do have some control over this but the idea with “auto ads” is to let google take care of placement and ad type for you.
+If this is fine for you then great you are done! however I prefer to have a little more control over ads which is why I’m also going to show how I prefer to do it.</p>
+
+<p><img src="https://i.imgur.com/wCilP5r.jpg" alt="Google ad unit templates" title="Google ad unit templates" width="800" height="347" /></p>
+
+<p>I prefer to add my own “ad unit”, there are a few to choose from but the most popular are “in-article ads” and “text &amp; display ads” Listing all of the difference goes beyond the scope of this article so although not a hard rule I’ll just say if you want ads in your content for example half way through your blog post use “in-article ads” otherwise if you wanted it at the start, end or even in a sidebar use “text &amp; display ads”.</p>
+
+<p><img src="https://i.imgur.com/XGM9tEl.jpg" alt="Google ad unit create" title="Google ad unit create" width="800" height="520" /></p>
+
+<p>If you create a new ad unit select the type you want, I’m going to use an “in-article ad” in this example, You will see a page that lets you customise the look and feel, adjust these settings to meet your needs and click “Save and get code”.</p>
+
+<p>This will give you a code snippet similar to the previous auto ads example, repeat the same steps as above (create a include with code snippet, replace your publisher id with the “google_adsense” config variable).</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _includes/article-adsense.html --&gt;</span>
+{% if jekyll.environment == 'production' and page.layout == 'post' and site.google_adsense %}
+  <span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;ins</span> <span class="na">class=</span><span class="s">"adsbygoogle"</span>
+  <span class="na">style=</span><span class="s">"display:block; text-align:center;"</span>
+  <span class="na">data-ad-layout=</span><span class="s">"in-article"</span>
+  <span class="na">data-ad-format=</span><span class="s">"fluid"</span>
+  <span class="na">data-ad-client=</span><span class="s">"{{ site.google_adsense }}"</span>
+  <span class="na">data-ad-slot=</span><span class="s">"9200453742"</span><span class="nt">&gt;&lt;/ins&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">adsbygoogle</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">adsbygoogle</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">push</span><span class="p">({});</span>
+  <span class="nt">&lt;/script&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<p>I have added the environment and page layout check inside the include instead of where I use it, this is because we’re going to be putting this include in the middle of blog posts and want to minimise the amount of unrelated logic and abstract the ad code away into this include.</p>
+
+<p>You may have also noticed that the first script tag is the same as the one from the auto ads snippet, I recommend that whether or not you also use auto ads to only include this script tag once in the head. This is because you may decide to have more than one ad in a post which means this include would have included it more than once.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _includes/head.html --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _includes/article-adsense.html --&gt;</span>
+{% if jekyll.environment == 'production' and page.layout == 'post' and site.google_adsense %}
+  <span class="nt">&lt;ins</span> <span class="na">class=</span><span class="s">"adsbygoogle"</span>
+  <span class="na">style=</span><span class="s">"display:block; text-align:center;"</span>
+  <span class="na">data-ad-layout=</span><span class="s">"in-article"</span>
+  <span class="na">data-ad-format=</span><span class="s">"fluid"</span>
+  <span class="na">data-ad-client=</span><span class="s">"{{ site.google_adsense }}"</span>
+  <span class="na">data-ad-slot=</span><span class="s">"9200453742"</span><span class="nt">&gt;&lt;/ins&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">adsbygoogle</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">adsbygoogle</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">push</span><span class="p">({});</span>
+  <span class="nt">&lt;/script&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _posts/my-blog-post.md --&gt;</span>
+<span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing...<span class="nt">&lt;/p&gt;</span>
+{% include article-adsense.html %}
+<span class="nt">&lt;p&gt;</span>Donec tristique, dui ac interdum...<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>Next you just include “article-adsense.html” anywhere you want to place an ad.
+If you wanted to try out other ad units you can follow the same steps and create new includes for them and have full control over where they are placed.</p>
+
+<p>Congratulations! you have Google AdSense working now you just need to promote your blog posts to get more people reading them, the more quality traffic you have on your site the higher your potential earnings can be, who knows perhaps you can earn enough to cover your coffee addiction or if your lucky it could be even be your primary income!</p>
+:ET

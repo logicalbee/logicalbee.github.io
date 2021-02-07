@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<div class="home">
+  {% if page.title %}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {% endif %}
+
+  {{ content }}
+
+  {% if site.posts.size > 0 %}
+    <ul class="post-list">
+      {% for post in site.posts %}
+      <li class="post-preview">
+        <a href="{{ post.url | relative_url }}">
+          <img class="post-preview-banner" src="{{post.image}}" alt="{{ post.title | escape }}" width="1248" height="340">
+        </a>
+        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+        <a class="post-link" href="{{ post.url | relative_url }}">
+          <h2>
+            {{ post.title | escape }}
+          </h2>
+        </a>
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        {% if post.intro %}
+          <p>{{ post.intro }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <br />
+    <p class="rss-subscribe">
+      <a href="{{ '/feed.xml' | relative_url }}">
+        <button>Subscribe via RSS</button>
+      </a>
+    </p>
+  {% endif %}
+
+</div>

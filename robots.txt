@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: */tags/
+Disallow: */categories/
+Disallow: */start.html
+Disallow: */next.html
+Disallow: */thanks.html
+Allow: /
+
+sitemap: https://logicalbee.in/sitemap.xml
+
+

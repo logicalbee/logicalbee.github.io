@@ -1,0 +1,73 @@
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+:root{--gutter: 1.5rem;--font: -apple-system, BlinkMacSystemFont, "Lato";--body-bg: #fafafa;--body-color: #555;--secondary-color: #7a7a7a;--link-color: #222;--link-color-hover: #000;--link-border-color: rgba(0,0,0,.25);--link-border-color-hover: rgba(0,0,0,.5);--heading-color: #333;--hr-color: rgba(0,0,0,.05);--kbd-color: var(--body-color);--kbd-bg: #eee;--pre-bg: #fff;--code-color: rgba(212, 73, 80, 1);--code-snippet-border: rgba(0,0,0,.05);--blockquote-border: #e5e5e5}
+
+@media (prefers-color-scheme: dark){:root{--body-bg: #282c34;--body-color: #abb2bf;--secondary-color: rgba(255,255,255,.5);--link-color: rgba(255,255,255,.75);--link-color-hover: #fff;--link-border-color: rgba(255,255,255,.25);--link-border-color-hover: rgba(255,255,255,.5);--heading-color: #dee2e6;--kbd-color: rgba(255,255,255,.5);--kbd-bg: rgba(255,255,255,.1);--hr-color: rgba(255,255,255,.1);--pre-bg: rgba(0,0,0,.1);--code-color: #e5c07b;--code-snippet-border: rgba(255,255,255,.1);--blockquote-border: rgba(255,255,255,.1)}img{opacity:.75;transition:opacity .5s ease-in-out}img:hover{opacity:1}}*{box-sizing:border-box}html{font-family:var(--font);font-size:16px}
+
+
+@media (min-width: 48em){html{font-size:20px}}body{padding:2rem var(--gutter);margin:0;line-height:1.5;color:var(--body-color);background-color:var(--body-bg)}p{position:relative;margin-top:0;margin-bottom:1rem}p img+em{display:block;max-width:75%;padding:0;margin:-1rem auto 0;font-family:var(--font);font-size:.6875rem;font-style:normal;color:#7a7a7a}
+
+
+// No `:visited` state is required by default (browsers will use `a`)
+a {
+  color: #268bd2;
+  text-decoration: none;
+
+  // `:focus` is linked to `:hover` for basic accessibility
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  strong {
+    color: inherit;
+  }
+}
+
+// Images
+img {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 1rem;
+  border-radius: 5px;
+}
+
+// Tables
+table {
+  margin-bottom: 1rem;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: .25rem .5rem;
+  border: 1px solid #e5e5e5;
+}
+
+
+// Adding 'Contents' headline to the TOC
+#markdown-toc::before {
+    content: "Contents";
+    font-weight: bold;
+}
+
+
+// Using numbers instead of bullets for listing
+#markdown-toc ul {
+    list-style: decimal;
+}
+
+#markdown-toc {
+    border: 1px solid #aaa;
+    padding: 1.5em;
+    list-style: decimal;
+    display: inline-block;
+    
+}

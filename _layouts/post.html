@@ -1,36 +1,32 @@
 ---
-layout: default
+layout: landing
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    {% if page.image %}
-      <img class="post-banner" src="{{page.image}}" alt="{{page.title}}" width="1248" height="340" />
-    {% endif %}
-      <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-  </header>
+<article class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <p class="post-date">{{ page.date | date_to_string }}</p>
+  <div class="tweet-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="Logicalbee" data-url="{{ post.url }}" data-text="{{ page.title }}">Tweet</a>
+</div>
+  
+  {{ content }}
 
-  <div class="post-content e-content" itemprop="articleBody">
-    <p class="post-intro">{{page.intro}}</p>
-    {{ content }}
-  </div>
-
-  {% if site.disqus.shortname %}
-    {% include disqus_comments.html %}
-  {% endif %}
-
-  <p class="post-meta">
-    <span>Published on </span>
-    <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-      {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-      {{ page.date | date: date_format }}
-    </time>
-  </p>
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+<h4>Useful..?</h4>
+<a href="https://www.buymeacoffee.com/logicalbee" target="_blank">Buy me a coffee :)</a><br>
 </article>
 
-<div class="separator"></div>
-<br />
-
-{% include author.html %}
+<aside class="related">
+  <h3>Related Posts</h3>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <h4>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h4>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: What happens when you type url in browser?
-summary: IThe communication between your client and a web server can be divided into the following
-components.
+summary: The communication between your client and a web server can be divided into the following components.
 tags: [computer network, TCP/IP]
 permalink: /what-happens-when-we-type-url-in-the-browser
 created: 2021-05-14

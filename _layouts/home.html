@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="page">
+  {{ page.content }}
+
+  {% include navigation.html border_bottom=true %}
+
+  <!-- <h4 class='gutter-small'>Latest Posts</h4> -->
+  <h1 class="page-title">{{ page.title }}</h1>
+
+  {% assign posts = site.posts | where: "featured", "true" %}
+
+  {% unless posts.size == nil %}
+  <ul class="posts-list">
+    {% for post in posts limit: 7 %}
+
+    {% include post-item.html show_summary=true %}
+
+    {% endfor %}
+  </ul>
+  {% endunless %}
+
+  <div class="navigation">
+    <hr class="border-top">
+    <a href="/archive/">View all posts &raquo;</a>
+  </div>
+
+</div>

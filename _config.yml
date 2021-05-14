@@ -13,13 +13,13 @@ permalink: /:title/
 # Setup
 title:            Logical Bee
 description:      'programming blog'
-url:              http://logicalbee.github.io
+url:              https://logicalbee.in
 baseurl:
 paginate:         20
 paginate_path: "/archive/page:num"
 
 # Custom vars
-google_analytics: UA-12262661-1
+google_analytics: 
 
 # see http://jch.penibelst.de
 compress_html:

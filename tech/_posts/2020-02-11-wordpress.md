@@ -9,7 +9,7 @@ permalink: /deploy-wordpress-on-gcp
 ### How to Deploy WordPress Website On Google Cloud Platform (GCP). 
 
 
-![Google Cloud Platform](images/svg.png)
+![Google Cloud Platform](public/images/svg.png)
 
 
 Step-By-Step Guide to configure a website from scratch! You need a credit card or Debit card to get started with Google cloud patform (GCP).and You Need Domain name for the best Practice, Otherwise you can purchase domain name from domains.google.com or bigrock.in, or GoDaddy.com, etc.

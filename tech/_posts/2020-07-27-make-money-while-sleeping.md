@@ -39,7 +39,7 @@ Why Affiliate Marketing?
 
 ### STEP 1: Choose a Best Profitable Niche
 
-![find-niche](images/niche.png){: height="300px" width="660px"}
+![find-niche](public/images/niche.png){: height="300px" width="660px"}
 
 The first step when getting started with affiliate marketing is to settle on a distinct segment .
 When choosing your niche make sure it has a huge demand and high profit margins.
@@ -48,7 +48,7 @@ Remember the goal here is to do what you love and to also make money while doing
   
 ### STEP 2: Choose an excellent product to promote
 
-![find-Product](images/find.jpg){: height="300px" width="660px"}
+![find-Product](public/images/find.jpg){: height="300px" width="660px"}
 
 The second step is to find an excellent product to promote.
 The product that you are promoting should be something that your niche/audience will be interested in.
@@ -57,7 +57,7 @@ If you are in the “Dog Training” niche, you should promote a “How to train
    
 ### STEP 3: Choose a traffic source/platform
 
-![Choose-traffic](images/social.jpg){: height="300px" width="660px"}
+![Choose-traffic](public/images/social.jpg){: height="300px" width="660px"}
 
 The third step is to choose a traffic source to promote your Product & bring people to your affiliate links.
 It doesn’t matter how good the product is, if people do not see it. You need a constant stream of targeted people seeing your product/offer.
@@ -75,7 +75,7 @@ After this, if required you can branch out into other traffic sources/platforms.
 
 ### STEP 4: Add value & build your brand
 
-![Brand-value](images/value.jpg){: height="300px" width="660px"}
+![Brand-value](public/images/value.jpg){: height="300px" width="660px"}
 
 The fourth step is to add value and build your brand.
   
@@ -89,7 +89,7 @@ The more your audience relate to and trust you, the higher chance that they will
 
 ### STEP 5: Build an automated sales funnel
 
-![Brand-fanal](images/fanal.jpg){: height="300px" width="660px"}
+![Brand-fanal](public/images/fanal.jpg){: height="300px" width="660px"}
 
 The fifth step is to build an automated sales funnel which is capable of making you money while you sleep.
 

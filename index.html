@@ -11,4 +11,22 @@ date: 2021-07-02
 
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2T2EWa5D90c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<li>
+    <h3>
+        <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+            <span>
+                {% if post.created %}
+                    updated: {{ post.date | date_to_string }}
+                {% else %}
+                    {{ post.date | date_to_string }}
+                {% endif %}
+            </span>
+        </a>
+    </h3>
+
+    {% if include.show_summary == true and post.summary %}
+        <p>{{ post.summary | remove: '<p>' | remove: '</p>' }}
+        <a class="nowrap" href="{{ post.url }}">Full details &hellip;</a></p>
+    {% endif %}
+</li>

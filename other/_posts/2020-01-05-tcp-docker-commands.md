@@ -11,7 +11,7 @@ date: 2021-05-04
 ---
 
 
-# What happens when you type url in browser?
+## What happens when you type url in browser?
 
 The communication between your client and a web server can be divided into the following
 components.

@@ -3,6 +3,7 @@ layout: post
 title: Cpp STL Algorithms Cheat Sheet
 description: In Cpp STL Algorithms Cheat Shee, The C++ Standard Template Library provides algorithms for functions that are commonly needed in everyday-scenarios, and for commonly used containerss.
 tags: [cpp, programming]
+featured: true
 links:
     - {link: "http://www.cplusplus.com/reference/algorithm/", 
     label: "cplusplus.com's list of STL algorithms."}            

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Git Commands
+featured: true
 tags: [git]
 ---
 

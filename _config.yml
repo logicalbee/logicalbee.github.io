@@ -7,7 +7,8 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Permalinks
-permalink:        pretty
+permalink: /:title/
+
 
 # Setup
 title:            Logical Bee

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Add Google Adsense with Gatsby
-description: Add Google Adsense with Gatsby, Gatsby is a free and open source framework based on React, Gatsby helps to build blazing fast and reliable webapps. 
+summary: Add Google Adsense with Gatsby, Gatsby is a free and open source framework based on React, Gatsby helps to build blazing fast and reliable webapps. 
 permalink: /add-google-adsense-with-gatsby
 ---
 

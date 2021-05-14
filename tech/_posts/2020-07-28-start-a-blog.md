@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How To Start A Blog - 2020
-description: This article is all about how to start a blog from scratch, and making money through that blog using affiliate marketing, and google adsense
+summary: This article is all about how to start a blog from scratch, and making money through that blog using affiliate marketing, and google adsense
 permalink: /how-to-start-a-blog
 ---
 

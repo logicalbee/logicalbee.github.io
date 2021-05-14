@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 5 Steps To Making Money With You Affiliate Marketing
-description: Affiliate marketing basically promoting products and services using your own unique affiliate links and whenever a sale is made via that s you will get a commission for each sale.
+summary: Affiliate marketing basically promoting products and services using your own unique affiliate links and whenever a sale is made via that s you will get a commission for each sale.
 permalink: /make-money-affiliate-marketing
 ---
 

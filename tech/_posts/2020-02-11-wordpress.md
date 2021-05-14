@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to Deploy WordPress On GCP - Step by step
-description: Step-By-Step Guide to deploy wordpress on gcp and configure a website from scratch! You need a credit card or Debit card to get started with Google cloud patform (GCP).
+summary: Step-By-Step Guide to deploy wordpress on gcp and configure a website from scratch! You need a credit card or Debit card to get started with Google cloud patform (GCP).
 featured: true
 permalink: /deploy-wordpress-on-gcp
 ---

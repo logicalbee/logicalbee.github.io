@@ -12,9 +12,11 @@ permalink: /best-way-to-drive-traffic-to-your-website
 ---
 
 
-
-<iframe src="https://www.youtube.com/embed/IwoYrFVQu24" class="is-fullwidth" height="315px"
-    ></iframe>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" width="560" height="315"
+    src="https://www.youtube.com/embed/IwoYrFVQu24" frameborder="0"
+    allowfullscreen=""></iframe>
+</div>
 
 
 Best way to drive traffic to your website for free

@@ -12,8 +12,8 @@ permalink: /best-way-to-drive-traffic-to-your-website
 ---
 
 
-<div class="video-container">
- <iframe width="560" height="315" src="https://www.youtube.com/embed/IwoYrFVQu24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<div class="separator"><iframe allowfullscreen="" height="315" src="https://www.youtube.com/embed/IwoYrFVQu24" width="460" youtube-src-id="TJeYsENNBtg" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 

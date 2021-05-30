@@ -3,6 +3,11 @@ layout: post
 title: Best way to drive traffic to your website for free 2021
 summary: Do you have trouble getting free traffic? In this video, I'll show you 1 methods I use to get visitors to my million-dollar site.
 featured: true
+links:
+    - {link: "https://www.similarweb.com/website/quora.com/", 
+    label: "Similarweb"}            
+    - {link: "https://www.spyfu.com/", 
+    label: "SpyFu - Keyword Research Tool"}
 permalink: /best-way-to-drive-traffic-to-your-website
 ---
 
@@ -20,6 +25,4 @@ Getting traffic to your website is difficult, and getting free traffic is even m
 
 You won't get any visitors when you first launch your website. You must go out and find people on the internet and inform them about your website.
 
-https://www.similarweb.com/website/quora.com/
 
-https://www.spyfu.com/

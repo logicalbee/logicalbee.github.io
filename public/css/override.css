@@ -2,7 +2,7 @@
  * html
  */
 html {
-    font-family: "Lato", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 /*
@@ -72,7 +72,7 @@ a.nolink {
     margin-bottom: 0;
 }
 .page-title, .post-title {
-    font-family: "Merriweather", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.7rem;
 }
 
@@ -80,7 +80,7 @@ a.nolink {
  * sidebar
  */
 .sidebar-about h1 {
-    font-family: "Merriweather", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
 }
 

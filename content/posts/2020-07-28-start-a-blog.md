@@ -1,6 +1,6 @@
 ---
 title: How To Start A Blog - 2020
-tags: ["hugo"]
+tags: ["business"]
 ---
 
 
@@ -26,7 +26,7 @@ If you are on this page then you may definitely be knowing all about this. this 
 Let’s get started!
 ### STEP 1: Choose a Best Profitable Niche
 
-![find-niche](public/images/niche.png){: height=”300px” width=”660px”}
+![find-niche](/images/niche.png)
 
 The first step when getting started with affiliate marketing is to settle on a distinct segment .
 When choosing your niche make sure it has a huge demand and high-profit margins.
@@ -83,23 +83,23 @@ Some of the Popular Hosting Providers listed below You can choose any:
 <table>
 <caption>RECOMMENDED TO START WEBSITE OR BLOG</caption>
 <tr>
-<td><img src="/public/images/bluehost.png" alt="bluehost logo" class="nopin" width="120"></td>
+<td><img src="/images/bluehost.png" alt="bluehost logo" class="nopin" width="120"></td>
 <td><b>Bluehost</b> is one of the largest hosting services powering millions of sites.</td>
 <td><a href="https://www.bluehost.com/track/iamsushanth/" rel="nofollow noopener noreferrer">Visit <br />Bluehost</a></td>
 </tr>
 <tr>
-<td><img src="/public/images/dreamhost.png" alt="dreamhost logo" class="nopin" width="120"></td>
+<td><img src="/images/dreamhost.png" alt="dreamhost logo" class="nopin" width="120"></td>
 <td><b>DreamHost</b> is the best monthly shared hosting provider in the industry.</td>
 <td><a href="https://mbsy.co/36sbBd" rel="nofollow noopener noreferrer" target="_blank">Visit <br />DreamHost</a></td>
 </tr>
 <tr>
-<td><img src="/public/images/siteground.jpg" class="nopin" width="120"></td>
+<td><img src="/images/siteground.jpg" class="nopin" width="120"></td>
 <td><b>Site Ground </b> is the best hosting provider for small business. <a href="https://www.siteground.com/index.htm?afcode=7fedc22a0de0e2c2e23424921674116d" rel="nofollow noopener noreferrer" target="_blank" style="color: rgb(255, 255, 255); background-color: rgb(9, 158, 51); font-size: 18px;"> Click here </a> to get <b>60% OFF</b> on all hosting plans from SiteGround
 </td>
 <td><a href="https://www.siteground.com/index.htm?afcode=7fedc22a0de0e2c2e23424921674116d" rel="nofollow noopener noreferrer" target="_blank">Visit <br />SiteGround</a></td>
 </tr>
 <tr>
-<td><img src="/public/images/hostgator.webp" class="nopin" width="120"></td>
+<td><img src="/images/hostgator.webp" class="nopin" width="120"></td>
 <td><b>HostGator </b> is the best hosting provider for small business. <a href="https://partners.hostgator.com/logicalbee" rel="nofollow noopener noreferrer" target="_blank" style="color: rgb(255, 255, 255); background-color: rgb(9, 158, 51); font-size: 18px;"> Click here </a> to get <b>60% OFF</b> on all hosting plans from SiteGround
 </td>
 <td><a href="https://partners.hostgator.com/logicalbee" rel="nofollow noopener noreferrer" target="_blank">Visit <br />HostGator</a></td>
@@ -130,7 +130,7 @@ Key features
 
 
 <a href="https://www.bluehost.com/track/iamsushanth/" target="_blank">
-<img border="0" src="https://bluehost-cdn.com/media/partner/public/images/iamsushanth/620x203/620x203BW.png">
+<img border="0" src="https://bluehost-cdn.com/media/partner/images/iamsushanth/620x203/620x203BW.png">
 </a>
 
 
@@ -139,15 +139,15 @@ Key features
 #3 Type in your domain name in the left box and then click “next” to start the registration process.
 
 
-![](public/images/choose-domain.jpg){: height=”300px” width=”660px”}
+![](/images/choose-domain.jpg)
 
 #### Fill out your billing details on the registration page.
 
-![](public/images/bluehost-account.jpg){: height=”300px” width=”660px”}
+![](/images/bluehost-account.jpg)
 
 #### You will also need to choose your hosting package and options.
 
-![](public/images/bluehost-package-options.jpg){: height=”300px” width=”660px”}
+![](/images/bluehost-package-options.jpg)
 
 
 All packages have everything you need to get your blog up and running, including a free domain name, easy WordPress blog installation, web hosting, and branded email accounts (e.g. yourname@yourdomain.com).
@@ -158,15 +158,15 @@ You can uncheck the boxes next to the other products when I sign-up. If you want
 <br>
 You will then need to create your account and password.
 
-![](public/images/create-account.jpg){: height=”300px” width=”660px”}
+![](/images/create-account.jpg)
 
 Once you do that you will be taken to an installation helper.  Since you are following this tutorial you can just click “Skip this step” on the next few pages to be taken directly to the dashboard.
 
-![](public/images/skip-step.jpg){: height=”300px” width=”660px”}
+![](/images/skip-step.jpg)
 
 Now WordPress will be installed. Once the install is complete click the blue “WordPress” button to be logged in to the administrator area of your blog.
 
-![](public/images/bluehost-dashboard-1.jpg){: height=”300px” width=”660px”}
+![](/images/bluehost-dashboard-1.jpg)
 
 
 ### STEP 4: Customize your blog
@@ -177,7 +177,7 @@ You can access the WordPress dashboard from your Bluehost account by clicking th
 
 Select a theme and design your blog
 
-![](public/images/wordpress-theme-activation.jpg){: height=”300px” width=”660px”}
+![](images/wordpress-theme-activation.jpg){: height=”300px” width=”660px”}
 
 In any blog or website, the front end-user experience is a top priority, so that your first impression can your user into a profitable business.
 
@@ -191,7 +191,7 @@ I strongly recommend you to install the theme called [Astra (FREE)](https://wpas
 <table>
 <caption>RECOMMENDED THEME FOR BLOG</caption>
 <tr>
-<td><img src="/public/images/astra.png" alt="bluehost logo" class="nopin"></td>
+<td><img src="/images/astra.png" alt="bluehost logo" class="nopin"></td>
 <td><b>Astra</b> Super Fast Performance
 Astra is made for speed. It is the most lightweight theme available in the market </td>
 <td><a href="https://wpastra.com/?bsf=5616" rel="nofollow noopener noreferrer">Visit<br />Astra</a></td>

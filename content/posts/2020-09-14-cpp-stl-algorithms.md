@@ -1,6 +1,6 @@
 ---
 title: Cpp STL Algorithms Cheat Sheet
-tags: [cpp, programming]
+tags: ["cpp", "programming"]
 ---
 
 # C++ STL Algorithms Cheat Sheet

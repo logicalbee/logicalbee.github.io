@@ -1,11 +1,9 @@
-baseURL = "logicalbee.github.io"
+baseURL = "https://logicalbee.github.io"
 languageCode = "en-us"
 title = "Sushanth Kurdekar"
 rssLimit = 20
 copyright = "2022 logicalbee All rights reserved"
 minify = true
-
-publishDir = "www"
 
 [Author]
   name = "Sushanth Kurdekar"

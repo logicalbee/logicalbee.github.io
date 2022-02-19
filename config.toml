@@ -1,4 +1,4 @@
-baseURL = "logicalbee.github.io"
+baseURL = "/"
 languageCode = "en-us"
 title = "Sushanth Kurdekar"
 rssLimit = 20

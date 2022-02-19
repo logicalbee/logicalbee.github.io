@@ -2,7 +2,6 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ if eq .IsHome true }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   {{ if .IsPage -}}
   <link rel="stylesheet" href="{{site.BaseURL}}assets/css/post.css" />
   <script defer src="{{site.BaseURL}}assets/js/lbox.js"></script>
@@ -14,28 +13,28 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
 
-  <meta name="keywords" content="blog,travel,food,coffee,bread,canada" />
+<meta name="keywords" content="Linux, WordPress, Computer Networks, Web3, Cloud, Business" />
 <meta property="og:site_name" content="{{ $.Site.Title }}" />
 <meta property="og:title" content="{{ $.Site.Title }}" />
-<meta name="twitter:site" content="@your-twitter-handle" />
-<meta name="twitter:creator" content="@your-twitter-handle" />
+<meta name="twitter:site" content="@travelwithsush" />
+<meta name="twitter:creator" content="@travelwithsush" />
 <meta name="theme-color" content="#1a202c">
 
 {{ if .IsPage }}
-  <title>{{ .Title }} | {{ $.Site.Title }}</title>
+  <title>{{ if eq .IsHome true }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{{ .Title }}" />
-  <meta property="og:description" content="{{ .Summary | safeHTML | truncate 10 }}" />
+  <meta property="og:description" content="{{ .Summary | safeHTML | truncate 256 }}" />
   <meta name="description" content="{{ .Summary | safeHTML | truncate 256 }}" />
   <meta property="twitter:title" content="{{ .Title }}" />
-  <meta property="twitter:description" content="{{ .Summary }}" />
-  <meta property="article:author" content="your-name" />
+  <meta property="twitter:description" content="{{ .Summary | safeHTML | truncate 256 }}" />
+  <meta property="article:author" content="Sushanth Kurdekar" />
   <meta property="article:published_time" content="{{ .Date }}" />
 {{ else }}
-  <title>{{ $.Site.Title }}</title>
+  <title>{{ if eq .IsHome true }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   <meta name="twitter:card" content="summary" />
   <meta property="og:title" content="{{ $.Site.Title }}" />
-  <meta property="og:description" content="blog about dancing" />
-  <meta name="description" content="blog about dancing" />
+  <meta property="og:description" content="blog about Technology" />
+  <meta name="description" content="blog about Technology" />
 {{ end }}
 </head>

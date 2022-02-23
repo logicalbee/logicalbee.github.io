@@ -155,7 +155,12 @@ main {
 .content img {
   max-width: 100%;
   margin: 1rem 0;
+  border-radius: 5px;
+  box-shadow: rgba(23,43,99,.2) 0 7px 28px!important;
 }
+
+
+
 
 /* pre , code */
 .content pre{
@@ -203,7 +208,7 @@ main {
   max-height: 80%;
   padding: 4px;
   background-color: black;
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 @media screen and (max-width: 750px) {

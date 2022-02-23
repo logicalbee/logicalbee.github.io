@@ -8,9 +8,9 @@
       <section class="articles">
         {{ range (.Paginate ( where site.RegularPages "Section" "posts" ).ByDate.Reverse).Pages }}
         <article class="article">
-          <h1 class="article-title">
+          <h2 class="article-title">
             <a href="{{ .Permalink }}" title="{{ .Title }}"> {{ .Title }} </a>
-          </h1>
+          </h2>
           <small class="date">{{ .Date.Format "Mon Jan 2, 2006" }}</small>
           <div class="tags">
             {{ range .Params.Tags }}

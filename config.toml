@@ -22,3 +22,5 @@ minify = true
 
 [params]
      Description = "The personal website, blog and dev diary of clairecodes"
+     Adsclient = "ca-pub-6155459918319745"
+     AdsinArticleSlot = "9713637367"

@@ -14,7 +14,7 @@
             {{ end }}
           </div>
         </div>
-        <div class="content">{{ .Content }}</div>
+        <div class="content">{{ .Content }} {{ partial "adsense-inarticle.html" . }}</div>
       </section>
       {{ partial "footer.html" . }}
     </main>

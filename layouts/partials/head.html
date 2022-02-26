@@ -24,6 +24,10 @@
   <title>{{ if eq .IsHome true }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{{ .Title }}" />
+  <meta
+     name="description"
+     content="{{ if .Params.summary }}{{ .Params.summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ else }}Something hardcoded{{ end }}"
+   />
   <meta property="og:description" content="{{ .Summary | safeHTML | truncate 256 }}" />
   <meta name="description" content="{{ .Summary | safeHTML | truncate 256 }}" />
   <meta property="twitter:title" content="{{ .Title }}" />

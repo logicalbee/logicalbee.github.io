@@ -12,15 +12,7 @@ tags: ["wordpress"]
 
 Step-By-Step Guide to configure a website from scratch! You need a credit card or Debit card to get started with Google cloud patform (GCP).and You Need Domain name for the best Practice, Otherwise you can purchase domain name from domains.google.com or bigrock.in, or GoDaddy.com, etc.
 
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6155459918319745"
-     data-ad-slot="5213320505"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<!--adsense-->
 
 #STEP #1
 Setup Google Cloud Platform

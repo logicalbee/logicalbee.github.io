@@ -105,15 +105,7 @@ Now, I'm sure you're a gr8 coder and all and could write your own functions, but
 
 For the sake of testing this code, we'll specify a very basic C++ file that our code would run in. Note that we include `vector`, because that's the container the examples will use, we're including `iostream` for `cout`, and we including `algorithm` for the actual STL algorithms.
 
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6155459918319745"
-     data-ad-slot="5213320505"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<!--adsense-->
 
 #### main.cpp
 

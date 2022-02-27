@@ -4,11 +4,7 @@ tags: ["hugo"]
 ---
 
 
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" width="560" height="315"
-    src="https://www.youtube.com/embed/IwoYrFVQu24" frameborder="0"
-    allowfullscreen=""></iframe>
-</div>
+{{< youtube IwoYrFVQu24 >}}
 
 
 Best way to drive traffic to your website for free

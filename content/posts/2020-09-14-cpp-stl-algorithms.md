@@ -1,12 +1,14 @@
 ---
 title: Cpp STL Algorithms Cheat Sheet
 tags: ["cpp", "programming"]
+date: 2021-12-15 00:00:01
+summary: "The C++ Standard Template Library provides algorithms for functions that are commonly needed in everyday-scenarios, and for commonly used containers."
 ---
 
 # C++ STL Algorithms Cheat Sheet
 
 
-The C++ Standard Template Library provides algorithms for functions that are commonly needed in everyday-scenarios, and for commonly used containerss. 
+The C++ Standard Template Library provides algorithms for functions that are commonly needed in everyday-scenarios, and for commonly used containers. 
 
 Now, I'm sure you're a gr8 coder and all and could write your own functions, but you should probably use the Standard Library's functions whenever possible. They're very efficient, both memory and space wise, especially if you use STL containers. 
 

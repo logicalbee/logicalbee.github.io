@@ -1,8 +1,8 @@
 ---
 title: Install OpenLiteSpeed, MariaDB, PHP8.0 on Ubuntu 20.04
 tags: ["gcp", "linux"]
-date: 2015-12-15 00:00:01
-summary: "An insightful description for this page that Google will like"
+date: 2021-12-15 00:00:01
+summary: "The following command should be run on your Ubuntu 20.04/18.04 OS before we install the LOMP stack."
 ---
 
 

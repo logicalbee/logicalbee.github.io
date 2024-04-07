@@ -1,19 +1,10 @@
 {
-  "data": [
-    {
-      "id": 1,
-      "server_name": "apps",
-      "url": "https://apps.logicalbee.in/verify-license/"
-    },
-    {
-      "id": 2,
+  "server-1": {
       "server_name": "echo",
       "url": "https://echo.logicalbee.in/verify-license/"
-    },
-    {
-      "id": 3,
-      "server_name": "api",
-      "url": "https://api.example.com/verify-license/"
-    }
-  ]
+  },
+   "server-2": {
+      "server_name": "apps",
+      "url": "https://apps.logicalbee.in/verify-license/"
+  } 
 }

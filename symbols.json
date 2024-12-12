@@ -1,590 +1,589 @@
-{
-    "BANKBARODA": {
-        "exch": "nse_fo",
-        "token": "65298",
-        "step_size": 1000,
-        "freeze_qty": 87751
-    },
-    "ADANIENT": {
-        "exch": "nse_fo",
-        "token": "64913",
-        "step_size": -716000,
-        "freeze_qty": 9001
-    },
-    "MARUTI": {
-        "exch": "nse_fo",
-        "token": "110192",
-        "step_size": 760000,
-        "freeze_qty": 2001
-    },
-    "SHREECEM": {
-        "exch": "nse_fo",
-        "token": "132047",
-        "step_size": 100000,
-        "freeze_qty": 1001
-    },
-    "CANBK": {
-        "exch": "nse_fo",
-        "token": "88259",
-        "step_size": 200,
-        "freeze_qty": 270001
-    },
-    "ASIANPAINT": {
-        "exch": "nse_fo",
-        "token": "36246",
-        "step_size": 120000,
-        "freeze_qty": 8001
-    },
-    "RECLTD": {
-        "exch": "nse_fo",
-        "token": "128124",
-        "step_size": -696000,
-        "freeze_qty": 50001
-    },
-    "RELIANCE": {
-        "exch": "nse_fo",
-        "token": "129254",
-        "step_size": -548000,
-        "freeze_qty": 20001
-    },
-    "ADANIPORTS": {
-        "exch": "nse_fo",
-        "token": "60430",
-        "step_size": 8000,
-        "freeze_qty": 16001
-    },
-    "ICICIBANK": {
-        "exch": "nse_fo",
-        "token": "88848",
-        "step_size": 2000,
-        "freeze_qty": 21001
-    },
-    "ICICIGI": {
-        "exch": "nse_fo",
-        "token": "99631",
-        "step_size": 4000,
-        "freeze_qty": 12501
-    },
-    "CHOLAFIN": {
-        "exch": "nse_fo",
-        "token": "84224",
-        "step_size": 4000,
-        "freeze_qty": 18751
-    },
-    "DIVISLAB": {
-        "exch": "nse_fo",
-        "token": "78662",
-        "step_size": 10000,
-        "freeze_qty": 4001
-    },
-    "LT": {
-        "exch": "nse_fo",
-        "token": "105956",
-        "step_size": 10000,
-        "freeze_qty": 6001
-    },
-    "COALINDIA": {
-        "exch": "nse_fo",
-        "token": "41921",
-        "step_size": -374000,
-        "freeze_qty": 52501
-    },
-    "GRASIM": {
-        "exch": "nse_fo",
-        "token": "84077",
-        "step_size": 8000,
-        "freeze_qty": 10001
-    },
-    "ICICIPRULI": {
-        "exch": "nse_fo",
-        "token": "99924",
-        "step_size": 2000,
-        "freeze_qty": 30001
-    },
-    "CIPLA": {
-        "exch": "nse_fo",
-        "token": "84784",
-        "step_size": 20000,
-        "freeze_qty": 16251
-    },
-    "HDFCBANK": {
-        "exch": "nse_fo",
-        "token": "85740",
-        "step_size": 4000,
-        "freeze_qty": 16501
-    },
-    "LTIM": {
-        "exch": "nse_fo",
-        "token": "128114",
-        "step_size": 10000,
-        "freeze_qty": 4501
-    },
-    "BRITANNIA": {
-        "exch": "nse_fo",
-        "token": "58501",
-        "step_size": 194000,
-        "freeze_qty": 4001
-    },
-    "HAVELLS": {
-        "exch": "nse_fo",
-        "token": "84832",
-        "step_size": 8000,
-        "freeze_qty": 15001
-    },
-    "HAL": {
-        "exch": "nse_fo",
-        "token": "84515",
-        "step_size": 432000,
-        "freeze_qty": 6001
-    },
-    "DABUR": {
-        "exch": "nse_fo",
-        "token": "88425",
-        "step_size": 1000,
-        "freeze_qty": 37501
-    },
-    "BEL": {
-        "exch": "nse_fo",
-        "token": "79055",
-        "step_size": -310000,
-        "freeze_qty": 85501
-    },
-    "SBILIFE": {
-        "exch": "nse_fo",
-        "token": "133018",
-        "step_size": 4000,
-        "freeze_qty": 15001
-    },
-    "SBIN": {
-        "exch": "nse_fo",
-        "token": "133917",
-        "step_size": 2000,
-        "freeze_qty": 30001
-    },
-    "SHRIRAMFIN": {
-        "exch": "nse_fo",
-        "token": "132559",
-        "step_size": 20000,
-        "freeze_qty": 7501
-    },
-    "AMBUJACEM": {
-        "exch": "nse_fo",
-        "token": "60716",
-        "step_size": 2000,
-        "freeze_qty": 45001
-    },
-    "SIEMENS": {
-        "exch": "nse_fo",
-        "token": "133237",
-        "step_size": 120000,
-        "freeze_qty": 3001
-    },
-    "TATACONSUM": {
-        "exch": "nse_fo",
-        "token": "56312",
-        "step_size": 47000,
-        "freeze_qty": 22801
-    },
-    "APOLLOHOSP": {
-        "exch": "nse_fo",
-        "token": "61638",
-        "step_size": 20000,
-        "freeze_qty": 3751
-    },
-    "TATAMOTORS": {
-        "exch": "nse_fo",
-        "token": "143092",
-        "step_size": 4000,
-        "freeze_qty": 27501
-    },
-    "TATAPOWER": {
-        "exch": "nse_fo",
-        "token": "53869",
-        "step_size": -47000,
-        "freeze_qty": 54001
-    },
-    "TATASTEEL": {
-        "exch": "nse_fo",
-        "token": "143328",
-        "step_size": 500,
-        "freeze_qty": 165001
-    },
-    "BAJAJ-AUTO": {
-        "exch": "nse_fo",
-        "token": "63883",
-        "step_size": 40000,
-        "freeze_qty": 2251
-    },
-    "TCS": {
-        "exch": "nse_fo",
-        "token": "143452",
-        "step_size": 10000,
-        "freeze_qty": 5251
-    },
-    "TECHM": {
-        "exch": "nse_fo",
-        "token": "143576",
-        "step_size": 4000,
-        "freeze_qty": 18001
-    },
-    "IRCTC": {
-        "exch": "nse_fo",
-        "token": "103782",
-        "step_size": 2000,
-        "freeze_qty": 26251
-    },
-    "TITAN": {
-        "exch": "nse_fo",
-        "token": "143970",
-        "step_size": 10000,
-        "freeze_qty": 7001
-    },
-    "IRFC": {
-        "exch": "nse_fo",
-        "token": "96082",
-        "step_size": 500,
-        "freeze_qty": 141001
-    },
-    "MOTHERSON": {
-        "exch": "nse_fo",
-        "token": "63300",
-        "step_size": -3000,
-        "freeze_qty": 142001
-    },
-    "HINDUNILVR": {
-        "exch": "nse_fo",
-        "token": "88023",
-        "step_size": 8000,
-        "freeze_qty": 9001
-    },
-    "M&M": {
-        "exch": "nse_fo",
-        "token": "129180",
-        "step_size": 10000,
-        "freeze_qty": 7001
-    },
-    "HCLTECH": {
-        "exch": "nse_fo",
-        "token": "85027",
-        "step_size": 4000,
-        "freeze_qty": 14001
-    },
-    "BHARTIARTL": {
-        "exch": "nse_fo",
-        "token": "83760",
-        "step_size": -58000,
-        "freeze_qty": 14251
-    },
-    "BHEL": {
-        "exch": "nse_fo",
-        "token": "84142",
-        "step_size": 3000,
-        "freeze_qty": 78751
-    },
-    "SUNPHARMA": {
-        "exch": "nse_fo",
-        "token": "139507",
-        "step_size": 183000,
-        "freeze_qty": 14001
-    },
-    "BOSCHLTD": {
-        "exch": "nse_fo",
-        "token": "85090",
-        "step_size": 100000,
-        "freeze_qty": 751
-    },
-    "ABB": {
-        "exch": "nse_fo",
-        "token": "65250",
-        "step_size": 20000,
-        "freeze_qty": 3751
-    },
-    "TORNTPHARM": {
-        "exch": "nse_fo",
-        "token": "144086",
-        "step_size": 20000,
-        "freeze_qty": 7501
-    },
-    "TRENT": {
-        "exch": "nse_fo",
-        "token": "144186",
-        "step_size": 20000,
-        "freeze_qty": 3001
-    },
-    "TVSMOTOR": {
-        "exch": "nse_fo",
-        "token": "144280",
-        "step_size": 160000,
-        "freeze_qty": 10501
-    },
-    "ULTRACEMCO": {
-        "exch": "nse_fo",
-        "token": "144606",
-        "step_size": 20000,
-        "freeze_qty": 2001
-    },
-    "UNITDSPR": {
-        "exch": "nse_fo",
-        "token": "145190",
-        "step_size": 4000,
-        "freeze_qty": 17501
-    },
-    "VEDL": {
-        "exch": "nse_fo",
-        "token": "145620",
-        "step_size": 4000,
-        "freeze_qty": 57501
-    },
-    "ITC": {
-        "exch": "nse_fo",
-        "token": "104170",
-        "step_size": 2000,
-        "freeze_qty": 48001
-    },
-    "JINDALSTEL": {
-        "exch": "nse_fo",
-        "token": "104542",
-        "step_size": 2000,
-        "freeze_qty": 25001
-    },
-    "HDFCLIFE": {
-        "exch": "nse_fo",
-        "token": "85996",
-        "step_size": 2000,
-        "freeze_qty": 33001
-    },
-    "JIOFIN": {
-        "exch": "nse_fo",
-        "token": "97458",
-        "step_size": 1000,
-        "freeze_qty": 66001
-    },
-    "BPCL": {
-        "exch": "nse_fo",
-        "token": "85533",
-        "step_size": 1000,
-        "freeze_qty": 72001
-    },
-    "WIPRO": {
-        "exch": "nse_fo",
-        "token": "145920",
-        "step_size": 1000,
-        "freeze_qty": 90001
-    },
-    "ZYDUSLIFE": {
-        "exch": "nse_fo",
-        "token": "146362",
-        "step_size": 4000,
-        "freeze_qty": 27001
-    },
-    "NESTLEIND": {
-        "exch": "nse_fo",
-        "token": "131555",
-        "step_size": 4000,
-        "freeze_qty": 10001
-    },
-    "HEROMOTOCO": {
-        "exch": "nse_fo",
-        "token": "110171",
-        "step_size": 20000,
-        "freeze_qty": 4501
-    },
-    "ONGC": {
-        "exch": "nse_fo",
-        "token": "132245",
-        "step_size": 1000,
-        "freeze_qty": 96251
-    },
-    "HINDALCO": {
-        "exch": "nse_fo",
-        "token": "110509",
-        "step_size": 2000,
-        "freeze_qty": 42001
-    },
-    "NAUKRI": {
-        "exch": "nse_fo",
-        "token": "131258",
-        "step_size": 20000,
-        "freeze_qty": 3001
-    },
-    "AXISBANK": {
-        "exch": "nse_fo",
-        "token": "63645",
-        "step_size": 4000,
-        "freeze_qty": 18751
-    },
-    "DLF": {
-        "exch": "nse_fo",
-        "token": "90503",
-        "step_size": 2000,
-        "freeze_qty": 33001
-    },
-    "DRREDDY": {
-        "exch": "nse_fo",
-        "token": "90995",
-        "step_size": 2000,
-        "freeze_qty": 18751
-    },
-    "BAJAJFINSV": {
-        "exch": "nse_fo",
-        "token": "64318",
-        "step_size": 8000,
-        "freeze_qty": 15001
-    },
-    "JSWENERGY": {
-        "exch": "nse_fo",
-        "token": "99703",
-        "step_size": 2000,
-        "freeze_qty": 37501
-    },
-    "NTPC": {
-        "exch": "nse_fo",
-        "token": "131831",
-        "step_size": 1000,
-        "freeze_qty": 60001
-    },
-    "EICHERMOT": {
-        "exch": "nse_fo",
-        "token": "91435",
-        "step_size": 10000,
-        "freeze_qty": 5251
-    },
-    "UNIONBANK": {
-        "exch": "nse_fo",
-        "token": "145064",
-        "step_size": 400,
-        "freeze_qty": 221251
-    },
-    "JSWSTEEL": {
-        "exch": "nse_fo",
-        "token": "105159",
-        "step_size": 2000,
-        "freeze_qty": 27001
-    },
-    "IOC": {
-        "exch": "nse_fo",
-        "token": "93810",
-        "step_size": 1000,
-        "freeze_qty": 146251
-    },
-    "NHPC": {
-        "exch": "nse_fo",
-        "token": "117382",
-        "step_size": 200,
-        "freeze_qty": 320001
-    },
-    "BAJFINANCE": {
-        "exch": "nse_fo",
-        "token": "64765",
-        "step_size": 20000,
-        "freeze_qty": 3751
-    },
-    "VBL": {
-        "exch": "nse_fo",
-        "token": "145538",
-        "step_size": 2000,
-        "freeze_qty": 35001
-    },
-    "GAIL": {
-        "exch": "nse_fo",
-        "token": "92733",
-        "step_size": 500,
-        "freeze_qty": 117501
-    },
-    "INDIGO": {
-        "exch": "nse_fo",
-        "token": "92276",
-        "step_size": 20000,
-        "freeze_qty": 6001
-    },
-    "INDUSINDBK": {
-        "exch": "nse_fo",
-        "token": "92591",
-        "step_size": 4000,
-        "freeze_qty": 20001
-    },
-    "PIDILITIND": {
-        "exch": "nse_fo",
-        "token": "132965",
-        "step_size": 4000,
-        "freeze_qty": 7501
-    },
-    "PFC": {
-        "exch": "nse_fo",
-        "token": "132777",
-        "step_size": 2000,
-        "freeze_qty": 52001
-    },
-    "ZOMATO": {
-        "exch": "nse_fo",
-        "token": "146278",
-        "step_size": 1000,
-        "freeze_qty": 80001
-    },
-    "INFY": {
-        "exch": "nse_fo",
-        "token": "93525",
-        "step_size": 8000,
-        "freeze_qty": 12001
-    },
-    "PNB": {
-        "exch": "nse_fo",
-        "token": "133557",
-        "step_size": 200,
-        "freeze_qty": 240001
-    },
-    "GODREJCP": {
-        "exch": "nse_fo",
-        "token": "93730",
-        "step_size": 4000,
-        "freeze_qty": 20001
-    },
-    "ADANIGREEN": {
-        "exch": "nse_fo",
-        "token": "40666",
-        "step_size": 8000,
-        "freeze_qty": 18751
-    },
-    "KOTAKBANK": {
-        "exch": "nse_fo",
-        "token": "105726",
-        "step_size": 4000,
-        "freeze_qty": 16001
-    },
-    "DMART": {
-        "exch": "nse_fo",
-        "token": "79821",
-        "step_size": 10000,
-        "freeze_qty": 6001
-    },
-    "POWERGRID": {
-        "exch": "nse_fo",
-        "token": "133779",
-        "step_size": 1000,
-        "freeze_qty": 72001
-    },
-    "ATGL": {
-        "exch": "nse_fo",
-        "token": "62929",
-        "step_size": 2000,
-        "freeze_qty": 31001
-    },
-    "LICI": {
-        "exch": "nse_fo",
-        "token": "104976",
-        "step_size": 13000,
-        "freeze_qty": 23001
-    },
-    "ADANIENSOL": {
-        "exch": "nse_fo",
-        "token": "59598",
-        "step_size": 4000,
-        "freeze_qty": 31251
-    },
-    "LODHA": {
-        "exch": "nse_fo",
-        "token": "105876",
-        "step_size": 115000,
-        "freeze_qty": 18001
-    }
-}
+{"NIFTY": {"exch":"nse_cm","token": "26000", "step_size": 50, "freeze_qty": 1800},
+                "FINNIFTY": {"exch":"nse_cm","token": "26037", "step_size": 50, "freeze_qty": 1800},
+                "BANKNIFTY": {"exch":"nse_cm","token": "26009", "step_size": 100, "freeze_qty": 900},
+                "MIDCPNIFTY": {"exch":"nse_cm","token": "26074", "step_size": 25, "freeze_qty": 2800},
+                "SENSEX": {"exch":"bse_cm","token": "1", "step_size": 100, "freeze_qty": 1000},
+                "BANKEX": {"exch":"bse_cm","token": "12", "step_size": 100, "freeze_qty": 900},
+                "TECHM": {
+                    "exch": "nse_cm",
+                    "token": "13538",
+                    "step_size": 20,
+                    "freeze_qty": 55758
+                },
+                "ABB": {
+                    "exch": "nse_cm",
+                    "token": "13",
+                    "step_size": 100,
+                    "freeze_qty": 13138
+                },
+                "ADANIENT": {
+                    "exch": "nse_cm",
+                    "token": "25",
+                    "step_size": 20,
+                    "freeze_qty": 39900
+                },
+                "JINDALSTEL": {
+                    "exch": "nse_cm",
+                    "token": "6733",
+                    "step_size": 10,
+                    "freeze_qty": 103028
+                },
+                "IRCTC": {
+                    "exch": "nse_cm",
+                    "token": "13611",
+                    "step_size": 10,
+                    "freeze_qty": 119200
+                },
+                "NAUKRI": {
+                    "exch": "nse_cm",
+                    "token": "13751",
+                    "step_size": 100,
+                    "freeze_qty": 11792
+                },
+                "HCLTECH": {
+                    "exch": "nse_cm",
+                    "token": "7229",
+                    "step_size": 20,
+                    "freeze_qty": 51559
+                },
+                "PFC": {
+                    "exch": "nse_cm",
+                    "token": "14299",
+                    "step_size": 10,
+                    "freeze_qty": 191405
+                },
+                "DLF": {
+                    "exch": "nse_cm",
+                    "token": "14732",
+                    "step_size": 10,
+                    "freeze_qty": 113864
+                },
+                "ZYDUSLIFE": {
+                    "exch": "nse_cm",
+                    "token": "7929",
+                    "step_size": 20,
+                    "freeze_qty": 101629
+                },
+                "POWERGRID": {
+                    "exch": "nse_cm",
+                    "token": "14977",
+                    "step_size": 5,
+                    "freeze_qty": 297619
+                },
+                "APOLLOHOSP": {
+                    "exch": "nse_cm",
+                    "token": "157",
+                    "step_size": 50,
+                    "freeze_qty": 13803
+                },
+                "ASIANPAINT": {
+                    "exch": "nse_cm",
+                    "token": "236",
+                    "step_size": 20,
+                    "freeze_qty": 41245
+                },
+                "BAJFINANCE": {
+                    "exch": "nse_cm",
+                    "token": "317",
+                    "step_size": 100,
+                    "freeze_qty": 14236
+                },
+                "BEL": {
+                    "exch": "nse_cm",
+                    "token": "383",
+                    "step_size": 5,
+                    "freeze_qty": 314320
+                },
+                "BHEL": {
+                    "exch": "nse_cm",
+                    "token": "438",
+                    "step_size": 5,
+                    "freeze_qty": 400437
+                },
+                "HDFCLIFE": {
+                    "exch": "nse_cm",
+                    "token": "467",
+                    "step_size": 10,
+                    "freeze_qty": 154959
+                },
+                "BPCL": {
+                    "exch": "nse_cm",
+                    "token": "526",
+                    "step_size": 5,
+                    "freeze_qty": 325387
+                },
+                "BRITANNIA": {
+                    "exch": "nse_cm",
+                    "token": "547",
+                    "step_size": 50,
+                    "freeze_qty": 20714
+                },
+                "CHOLAFIN": {
+                    "exch": "nse_cm",
+                    "token": "685",
+                    "step_size": 20,
+                    "freeze_qty": 77317
+                },
+                "CIPLA": {
+                    "exch": "nse_cm",
+                    "token": "694",
+                    "step_size": 20,
+                    "freeze_qty": 67835
+                },
+                "DABUR": {
+                    "exch": "nse_cm",
+                    "token": "772",
+                    "step_size": 5,
+                    "freeze_qty": 196726
+                },
+                "DRREDDY": {
+                    "exch": "nse_cm",
+                    "token": "881",
+                    "step_size": 10,
+                    "freeze_qty": 79263
+                },
+                "EICHERMOT": {
+                    "exch": "nse_cm",
+                    "token": "910",
+                    "step_size": 50,
+                    "freeze_qty": 20554
+                },
+                "ADANIPORTS": {
+                    "exch": "nse_cm",
+                    "token": "15083",
+                    "step_size": 20,
+                    "freeze_qty": 77765
+                },
+                "TVSMOTOR": {
+                    "exch": "nse_cm",
+                    "token": "8479",
+                    "step_size": 50,
+                    "freeze_qty": 39907
+                },
+                "RECLTD": {
+                    "exch": "nse_cm",
+                    "token": "15355",
+                    "step_size": 10,
+                    "freeze_qty": 176426
+                },
+                "COALINDIA": {
+                    "exch": "nse_cm",
+                    "token": "20374",
+                    "step_size": 5,
+                    "freeze_qty": 240346
+                },
+                "LICI": {
+                    "exch": "nse_cm",
+                    "token": "9480",
+                    "step_size": 10,
+                    "freeze_qty": 101199
+                },
+                "BAJAJ-AUTO": {
+                    "exch": "nse_cm",
+                    "token": "16669",
+                    "step_size": 100,
+                    "freeze_qty": 10891
+                },
+                "BAJAJFINSV": {
+                    "exch": "nse_cm",
+                    "token": "16675",
+                    "step_size": 20,
+                    "freeze_qty": 60673
+                },
+                "HAVELLS": {
+                    "exch": "nse_cm",
+                    "token": "9819",
+                    "step_size": 20,
+                    "freeze_qty": 58303
+                },
+                "ICICIGI": {
+                    "exch": "nse_cm",
+                    "token": "21770",
+                    "step_size": 20,
+                    "freeze_qty": 50940
+                },
+                "SBILIFE": {
+                    "exch": "nse_cm",
+                    "token": "21808",
+                    "step_size": 20,
+                    "freeze_qty": 67128
+                },
+                "NHPC": {
+                    "exch": "nse_cm",
+                    "token": "17400",
+                    "step_size": 1,
+                    "freeze_qty": 1145133
+                },
+                "LTIM": {
+                    "exch": "nse_cm",
+                    "token": "17818",
+                    "step_size": 50,
+                    "freeze_qty": 15401
+                },
+                "JSWENERGY": {
+                    "exch": "nse_cm",
+                    "token": "17869",
+                    "step_size": 10,
+                    "freeze_qty": 146812
+                },
+                "NESTLEIND": {
+                    "exch": "nse_cm",
+                    "token": "17963",
+                    "step_size": 20,
+                    "freeze_qty": 44351
+                },
+                "JIOFIN": {
+                    "exch": "nse_cm",
+                    "token": "18143",
+                    "step_size": 5,
+                    "freeze_qty": 292251
+                },
+                "ICICIPRULI": {
+                    "exch": "nse_cm",
+                    "token": "18652",
+                    "step_size": 10,
+                    "freeze_qty": 147318
+                },
+                "VBL": {
+                    "exch": "nse_cm",
+                    "token": "18921",
+                    "step_size": 10,
+                    "freeze_qty": 152685
+                },
+                "DMART": {
+                    "exch": "nse_cm",
+                    "token": "19913",
+                    "step_size": 50,
+                    "freeze_qty": 26029
+                },
+                "GRASIM": {
+                    "exch": "nse_cm",
+                    "token": "1232",
+                    "step_size": 20,
+                    "freeze_qty": 36874
+                },
+                "AMBUJACEM": {
+                    "exch": "nse_cm",
+                    "token": "1270",
+                    "step_size": 10,
+                    "freeze_qty": 174881
+                },
+                "HDFCBANK": {
+                    "exch": "nse_cm",
+                    "token": "1333",
+                    "step_size": 10,
+                    "freeze_qty": 53400
+                },
+                "HEROMOTOCO": {
+                    "exch": "nse_cm",
+                    "token": "1348",
+                    "step_size": 100,
+                    "freeze_qty": 21597
+                },
+                "HINDALCO": {
+                    "exch": "nse_cm",
+                    "token": "1363",
+                    "step_size": 10,
+                    "freeze_qty": 148316
+                },
+                "HINDUNILVR": {
+                    "exch": "nse_cm",
+                    "token": "1394",
+                    "step_size": 20,
+                    "freeze_qty": 39943
+                },
+                "INFY": {
+                    "exch": "nse_cm",
+                    "token": "1594",
+                    "step_size": 20,
+                    "freeze_qty": 49825
+                },
+                "IOC": {
+                    "exch": "nse_cm",
+                    "token": "1624",
+                    "step_size": 2.50,
+                    "freeze_qty": 691940
+                },
+                "ITC": {
+                    "exch": "nse_cm",
+                    "token": "1660",
+                    "step_size": 5,
+                    "freeze_qty": 212629
+                },
+                "KOTAKBANK": {
+                    "exch": "nse_cm",
+                    "token": "1922",
+                    "step_size": 20,
+                    "freeze_qty": 55667
+                },
+                "TRENT": {
+                    "exch": "nse_cm",
+                    "token": "1964",
+                    "step_size": 100,
+                    "freeze_qty": 14219
+                },
+                "IRFC": {
+                    "exch": "nse_cm",
+                    "token": "2029",
+                    "step_size": 2.50,
+                    "freeze_qty": 627288
+                },
+                "M&M": {
+                    "exch": "nse_cm",
+                    "token": "2031",
+                    "step_size": 50,
+                    "freeze_qty": 32331
+                },
+                "BOSCHLTD": {
+                    "exch": "nse_cm",
+                    "token": "2181",
+                    "step_size": 500,
+                    "freeze_qty": 2772
+                },
+                "HAL": {
+                    "exch": "nse_cm",
+                    "token": "2303",
+                    "step_size": 100,
+                    "freeze_qty": 21400
+                },
+                "PIDILITIND": {
+                    "exch": "nse_cm",
+                    "token": "2664",
+                    "step_size": 20,
+                    "freeze_qty": 31534
+                },
+                "RELIANCE": {
+                    "exch": "nse_cm",
+                    "token": "2885",
+                    "step_size": 10,
+                    "freeze_qty": 67658
+                },
+                "SBIN": {
+                    "exch": "nse_cm",
+                    "token": "3045",
+                    "step_size": 10,
+                    "freeze_qty": 116019
+                },
+                "VEDL": {
+                    "exch": "nse_cm",
+                    "token": "3063",
+                    "step_size": 10,
+                    "freeze_qty": 199429
+                },
+                "SHREECEM": {
+                    "exch": "nse_cm",
+                    "token": "3103",
+                    "step_size": 250,
+                    "freeze_qty": 3716
+                },
+                "SIEMENS": {
+                    "exch": "nse_cm",
+                    "token": "3150",
+                    "step_size": 100,
+                    "freeze_qty": 12464
+                },
+                "GODREJCP": {
+                    "exch": "nse_cm",
+                    "token": "10099",
+                    "step_size": 20,
+                    "freeze_qty": 87968
+                },
+                "LODHA": {
+                    "exch": "nse_cm",
+                    "token": "3220",
+                    "step_size": 20,
+                    "freeze_qty": 71657
+                },
+                "SUNPHARMA": {
+                    "exch": "nse_cm",
+                    "token": "3351",
+                    "step_size": 20,
+                    "freeze_qty": 55184
+                },
+                "ADANIENSOL": {
+                    "exch": "nse_cm",
+                    "token": "10217",
+                    "step_size": 20,
+                    "freeze_qty": 123732
+                },
+                "TATAPOWER": {
+                    "exch": "nse_cm",
+                    "token": "3426",
+                    "step_size": 5,
+                    "freeze_qty": 226869
+                },
+                "TATACONSUM": {
+                    "exch": "nse_cm",
+                    "token": "3432",
+                    "step_size": 10,
+                    "freeze_qty": 106855
+                },
+                "TATAMOTORS": {
+                    "exch": "nse_cm",
+                    "token": "3456",
+                    "step_size": 10,
+                    "freeze_qty": 125150
+                },
+                "TATASTEEL": {
+                    "exch": "nse_cm",
+                    "token": "3499",
+                    "step_size": 2.50,
+                    "freeze_qty": 661626
+                },
+                "TITAN": {
+                    "exch": "nse_cm",
+                    "token": "3506",
+                    "step_size": 50,
+                    "freeze_qty": 28409
+                },
+                "TORNTPHARM": {
+                    "exch": "nse_cm",
+                    "token": "3518",
+                    "step_size": 50,
+                    "freeze_qty": 29783
+                },
+                "ADANIGREEN": {
+                    "exch": "nse_cm",
+                    "token": "3563",
+                    "step_size": 20,
+                    "freeze_qty": 80785
+                },
+                "UNITDSPR": {
+                    "exch": "nse_cm",
+                    "token": "10447",
+                    "step_size": 20,
+                    "freeze_qty": 66188
+                },
+                "BHARTIARTL": {
+                    "exch": "nse_cm",
+                    "token": "10604",
+                    "step_size": 20,
+                    "freeze_qty": 56931
+                },
+                "WIPRO": {
+                    "exch": "nse_cm",
+                    "token": "3787",
+                    "step_size": 2.50,
+                    "freeze_qty": 324340
+                },
+                "PNB": {
+                    "exch": "nse_cm",
+                    "token": "10666",
+                    "step_size": 1,
+                    "freeze_qty": 913914
+                },
+                "UNIONBANK": {
+                    "exch": "nse_cm",
+                    "token": "10753",
+                    "step_size": 1,
+                    "freeze_qty": 770994
+                },
+                "CANBK": {
+                    "exch": "nse_cm",
+                    "token": "10794",
+                    "step_size": 1,
+                    "freeze_qty": 916135
+                },
+                "DIVISLAB": {
+                    "exch": "nse_cm",
+                    "token": "10940",
+                    "step_size": 50,
+                    "freeze_qty": 16724
+                },
+                "MARUTI": {
+                    "exch": "nse_cm",
+                    "token": "10999",
+                    "step_size": 100,
+                    "freeze_qty": 8803
+                },
+                "MOTHERSON": {
+                    "exch": "nse_cm",
+                    "token": "4204",
+                    "step_size": 2.50,
+                    "freeze_qty": 598085
+                },
+                "INDIGO": {
+                    "exch": "nse_cm",
+                    "token": "11195",
+                    "step_size": 50,
+                    "freeze_qty": 22016
+                },
+                "SHRIRAMFIN": {
+                    "exch": "nse_cm",
+                    "token": "4306",
+                    "step_size": 50,
+                    "freeze_qty": 31959
+                },
+                "LT": {
+                    "exch": "nse_cm",
+                    "token": "11483",
+                    "step_size": 50,
+                    "freeze_qty": 24749
+                },
+                "BANKBARODA": {
+                    "exch": "nse_cm",
+                    "token": "4668",
+                    "step_size": 2.50,
+                    "freeze_qty": 377509
+                },
+                "ULTRACEMCO": {
+                    "exch": "nse_cm",
+                    "token": "11532",
+                    "step_size": 100,
+                    "freeze_qty": 8372
+                },
+                "TCS": {
+                    "exch": "nse_cm",
+                    "token": "11536",
+                    "step_size": 50,
+                    "freeze_qty": 21708
+                },
+                "GAIL": {
+                    "exch": "nse_cm",
+                    "token": "4717",
+                    "step_size": 2.50,
+                    "freeze_qty": 473407
+                },
+                "NTPC": {
+                    "exch": "nse_cm",
+                    "token": "11630",
+                    "step_size": 5,
+                    "freeze_qty": 261809
+                },
+                "JSWSTEEL": {
+                    "exch": "nse_cm",
+                    "token": "11723",
+                    "step_size": 10,
+                    "freeze_qty": 97818
+                },
+                "ICICIBANK": {
+                    "exch": "nse_cm",
+                    "token": "4963",
+                    "step_size": 10,
+                    "freeze_qty": 70456
+                },
+                "ZOMATO": {
+                    "exch": "nse_cm",
+                    "token": "5097",
+                    "step_size": 5,
+                    "freeze_qty": 335706
+                },
+                "INDUSINDBK": {
+                    "exch": "nse_cm",
+                    "token": "5258",
+                    "step_size": 20,
+                    "freeze_qty": 101269
+                },
+                "AXISBANK": {
+                    "exch": "nse_cm",
+                    "token": "5900",
+                    "step_size": 10,
+                    "freeze_qty": 83512
+                },
+                "ATGL": {
+                    "exch": "nse_cm",
+                    "token": "6066",
+                    "step_size": 10,
+                    "freeze_qty": 136376
+                }
+                }

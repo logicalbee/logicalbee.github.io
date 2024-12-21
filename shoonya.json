@@ -585,5 +585,53 @@
                     "token": "6066",
                     "step_size": 10,
                     "freeze_qty": 136376
-                }
+                },
+  "CRUDEOIL": {
+        "exch": "MCX",
+        "token": "435823",
+        "step_size": 50,
+        "freeze_qty": 10000
+    },
+    "CRUDEOILM": {
+        "exch": "MCX",
+        "token": "435824",
+        "step_size": 10,
+        "freeze_qty": 10000
+    },
+    "GOLD": {
+        "exch": "MCX",
+        "token": "426468",
+        "step_size": 100,
+        "freeze_qty": 10000
+    },
+    "GOLDM": {
+        "exch": "MCX",
+        "token": "439223",
+        "step_size": 100,
+        "freeze_qty": 10000
+    },
+    "SILVER": {
+        "exch": "MCX",
+        "token": "426467",
+        "step_size": 250,
+        "freeze_qty": 600
+    },
+    "SILVERM": {
+        "exch": "MCX",
+        "token": "429816",
+        "step_size": 250,
+        "freeze_qty": 600
+    },
+    "NATURALGAS": {
+        "exch": "MCX",
+        "token": "436080",
+        "step_size": 5,
+        "freeze_qty": 60000
+    },
+    "NATGASMINI": {
+        "exch": "MCX",
+        "token": "436081",
+        "step_size": 5,
+        "freeze_qty": 60000
+    }
                 }

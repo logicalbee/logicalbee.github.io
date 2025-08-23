@@ -1,6 +1,6 @@
 baseURL = 'https://logicalbee.github.io/'
 languageCode = 'en-us'
-title = 'Sushanth Kurdekar (Logical Bee)'
+title = 'Sushanth Kurdekar'
 theme = 'hugo-bearblog'
 minify = true
 
@@ -16,9 +16,14 @@ minify = true
   weight = 2
 
 [[menu.main]]
+  name = "projects"
+  url = "/projects/"
+  weight = 4
+
+[[menu.main]]
   name = "resume"
   url = "/resume.pdf"
-  weight = 3
+  weight = 5
 
 [params]
   description = "My Internet home"
@@ -28,7 +33,7 @@ minify = true
 
 [services]
   [services.googleAnalytics]
-    id = "G-WJT0MDZBL1"
+    id = "G-XXXXXXXX"
 
 [markup]
   [markup.goldmark]

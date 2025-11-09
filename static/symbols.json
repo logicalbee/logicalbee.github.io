@@ -4,6 +4,7 @@
                 "MIDCPNIFTY": {"exch":"nse_cm","token": "26074", "step_size": 25, "freeze_qty": 2800},
                 "SENSEX": {"exch":"bse_cm","token": "1", "step_size": 100, "freeze_qty": 1000},
                 "BANKEX": {"exch":"bse_cm","token": "12", "step_size": 100, "freeze_qty": 900},
+                "VIX": {"exch":"nse_cm","token": "26017", "step_size": 50, "freeze_qty": 900},
                 "TECHM": {
                     "exch": "nse_cm",
                     "token": "13538",
@@ -587,3 +588,4 @@
                     "freeze_qty": 136376
                 }
                 }
+
